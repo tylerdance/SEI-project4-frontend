@@ -1,18 +1,17 @@
-// Imports
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-// CSS
 import './App.css';
-// Components
-import Welcome from './components/Welcome';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import About from './components/About';
+// import About from './Components/About';
+import ChatRoom from "./components/chat/ChatRoom"
+import Chat from "./components/chat/Chat"
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = localStorage.getItem('jwtToken');
@@ -25,7 +24,6 @@ function App() {
   // Set state values
   const [currentUser, setCurrentUser] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-
   useEffect(() => {
     let token;
     // if there is no token in localStorage, then the user is in authenticated
@@ -57,13 +55,15 @@ function App() {
       <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
       <div className="container mt-5">
         <Switch>
-          <Route path='/signup' component={ Signup } />
+          <Route path='/signup' component={Signup} />
           <Route 
             path='/login' 
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} />
-          <Route path='/about' component={ About } />
+          {/* <Route path='/about' component={ About } /> */}
           <PrivateRoute path="/profile" component={ Profile } user={currentUser}/>
-          <Route exact path="/" component={ Welcome }/>
+          {/* <Route exact path="/" component={ Welcome }/> */}
+          <Route exact path="/chat" component={Chat} user={currentUser}/>
+        <PrivateRoute exact path="/chat/:roomId" component={ChatRoom} user={currentUser} />
         </Switch>
       </div>
       <Footer />

@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-
 const Navbar = (props) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -12,7 +11,7 @@ const Navbar = (props) => {
                 <div className="collapse navbar-collapse" id="navbarsExample07">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <NavLink className="nav-link" exact to="/">Home</NavLink>
+                            <NavLink className="nav-link" exact to="/chat">Chat</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link"  to="/about">About</NavLink>
@@ -42,5 +41,4 @@ const Navbar = (props) => {
         </nav>
     );
 }
-
 export default Navbar;
