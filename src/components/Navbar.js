@@ -1,6 +1,10 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+
 const Navbar = (props) => {
+
+    const notification = `/chat/${props.user.id}`
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
@@ -13,15 +17,12 @@ const Navbar = (props) => {
                         <li className="nav-item">
                             <NavLink className="nav-link" exact to="/chat">Chat</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link"  to="/about">About</NavLink>
-                        </li>
                     </ul>
                     {
                         props.isAuth 
                         ? <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <NavLink className="nav-link"  to="/profile">Profile</NavLink>
+                                <NavLink className="nav-link" to={notification}>Profile</NavLink>
                             </li>
                             <li className="nav-item">
                                 <span onClick={props.handleLogout} className="nav-link logout-link">Logout</span>
@@ -34,7 +35,7 @@ const Navbar = (props) => {
                             <li className="nav-item">
                                 <NavLink className="nav-link"  to="/login">Login</NavLink>
                             </li>
-                          </ul>
+                        </ul>
                     }
                 </div>
             </div>

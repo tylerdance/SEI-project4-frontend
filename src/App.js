@@ -50,20 +50,20 @@ function App() {
     }
   }
 
+  const notification = currentUser ? `/chat/${currentUser.id}` : null
+
   return (
     <div className="App">
-      <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
+      <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} user={currentUser} />
       <div className="container mt-5">
         <Switch>
           <Route path='/signup' component={Signup} />
           <Route 
             path='/login' 
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} />
-          {/* <Route path='/about' component={ About } /> */}
-          <PrivateRoute path="/profile" component={ Profile } user={currentUser}/>
-          {/* <Route exact path="/" component={ Welcome }/> */}
+          {/* <PrivateRoute path="/profile" component={ Profile } user={currentUser}/> */}
           <Route exact path="/chat" component={Chat} user={currentUser}/>
-        <PrivateRoute exact path="/chat/:roomId" component={ChatRoom} user={currentUser} />
+          <PrivateRoute exact path="/chat/:roomId" component={ChatRoom} user={currentUser} />
         </Switch>
       </div>
       <Footer />

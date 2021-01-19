@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Chat = () => {
+const Chat = (props) => {
     const [roomName, setRoomName] = React.useState("");
     const handleRoomNameChange = (event) => {
     setRoomName(event.target.value);
@@ -9,14 +9,14 @@ const Chat = () => {
 
   return (
     <div className="home-container">
-      <input
+      {/* <input
         type="text"
         placeholder="Room"
         value={roomName}
         onChange={handleRoomNameChange}
         className="text-input-field"
-      />
-      <Link to={`/chat/${roomName}`} className="enter-room-button">
+      /> */}
+      <Link to={`/chat/${props.id}`} className="enter-room-button">
         Join room
       </Link>
     </div>
