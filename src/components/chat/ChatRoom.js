@@ -5,7 +5,8 @@ const ChatRoom = (props) => {
     const { roomId } = props.match.params; 
     const user = props.user.name// Gets roomId from URL
     const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
-    const [newMessage, setNewMessage] = useState(""); // Message to be sent
+    const [newMessage, setNewMessage] = useState("");
+    
     // const [currentUser, serCurrentUser] = useState(props.user.name)
 
     const handleNewMessageChange = (event) => {
@@ -14,40 +15,58 @@ const ChatRoom = (props) => {
       console.log(user + '!!!!!!')
     };
 
+ 
+    
+
     const handleSendMessage = () => {
       sendMessage(newMessage);
       setNewMessage("");
+      alert("Your like has been sent!!")
     };
 
     return (
       <div className="chat-room-container">
+        <h1>{props.user.name}</h1>
         <h1 className="room-name">Room: {roomId}</h1>
         <div className="messages-container">
-          <ol className="messages-list">
+          <div className="messages-list">
             {messages.map((message, i) => (
-              <li
+              
+              <p
                 key={i}
                 className={`message-item ${
                   message.ownedByCurrentUser ? "my-message" : "received-message"
                 }`}
               > 
-               <p> {message.body}</p>
+                { props.user.id !== roomId ?
+                <div></div> :
+                <div>
+               <p> Your profile was liked by</p>
                <p>{message.senderId}</p> 
-              </li>
+               </div>
+              }
+              </p>
             ))}
-          </ol>
+          </div>
         </div>
-        <textarea
+        { props.user.id !== roomId ?
+         <div>
+        
+        {/* <textarea
           value={newMessage}
           onChange={handleNewMessageChange}
           placeholder="Write message..."
           className="new-message-input-field"
-        />
+        /> */}
+       
         <button onClick={handleSendMessage} className="send-message-button">
-          Send
-        </button>
+          Like
+        </button> 
+        </div> : 
+        <div></div>
+        }
       </div>
-    );
-};
+    )};
+;
 
 export default ChatRoom;
