@@ -7,10 +7,10 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
-import Signup from './components/Signup';
-import Login from './components/Login';
+import Signup from './components/auth/Signup';
+import Login from './components/auth/Login';
 // import About from './Components/About';
-import ChatRoom from "./components/chat/Notifications"
+import Notifications from "./components/Notifications"
 import Chat from "./components/chat/Chat"
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -63,7 +63,7 @@ function App() {
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} />
           {/* <PrivateRoute path="/profile" component={ Profile } user={currentUser}/> */}
           <Route exact path="/chat" component={Chat} user={currentUser}/>
-          <PrivateRoute exact path="/chat/:roomId" component={ChatRoom} user={currentUser} />
+          <PrivateRoute exact path="/chat/:roomId" component={Notifications} user={currentUser} />
         </Switch>
       </div>
       <Footer />

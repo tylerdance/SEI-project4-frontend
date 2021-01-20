@@ -12,3 +12,13 @@ body {
   height: 60px; /* Set the fixed height of the footer here */
   line-height: 60px; /* Vertically center the text there */
 }
+
+.like-button {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 97, 97);
+}
+
+#user-name {
+  margin: 10px;
+}

@@ -1,7 +1,7 @@
 import useChat from "./chat/useChat";
 import React, { useState } from "react";
 
-function User(props) {
+function Swipe(props) {
     const roomId = props.id; 
     const user = props.me // Gets roomId from URL
     const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
@@ -24,9 +24,9 @@ function User(props) {
     };
     
     return(
-        <div>
-          <p>{props.name}</p>
-          <p>{props.id}</p>
+        <div className="like-button">
+          <p id="user-name">{props.name} </p>
+          {/* <p>{props.id}</p> */}
           {/* <p> Your profile was liked by</p> */}
           {/* <p>{messages.senderId}</p>  */}
           <button onClick={handleSendMessage} className="send-message-button">
@@ -36,4 +36,4 @@ function User(props) {
     )
 }
 
-export default User;
+export default Swipe;

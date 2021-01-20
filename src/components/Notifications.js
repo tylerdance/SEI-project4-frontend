@@ -1,11 +1,11 @@
 import axios from "axios";
 import Axios from 'axios'
 import React, { useEffect, useState } from "react";
-import useChat from "./useChat";
-import Swipe from './Swipe'
+import useChat from "./chat/useChat";
+import Sort from './Sort'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const ChatRoom = (props) => {
+const Notifications = (props) => {
   const { roomId } = props.match.params; 
   const user = props.user.name// Gets roomId from URL
   const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
@@ -47,10 +47,8 @@ const ChatRoom = (props) => {
 
   return (
     <div>
-      <Swipe user={account} me={props.user.name} />
       <div className="chat-room-container">
         <h1>{props.user.name}</h1>
-        <h1 className="room-name">Room: {roomId}</h1>
         <div className="messages-container">
           <div className="messages-list">
             {messages.map((message, i) => (
@@ -88,7 +86,8 @@ const ChatRoom = (props) => {
         <div></div>
         }
       </div>
+      <Sort user={account} me={props.user.name} />
     </div>
 )};
 
-export default ChatRoom;
+export default Notifications;

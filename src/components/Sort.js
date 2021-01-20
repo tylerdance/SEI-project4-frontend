@@ -1,6 +1,6 @@
-import User from '../User'
+import Swipe from './Swipe'
 
-function Swipe(props) {
+function Sort(props) {
     
 
     console.log(props);
@@ -10,13 +10,12 @@ function Swipe(props) {
                 <button onClick={handleSendMessage} className="send-message-button">
                     Like
                 </button>  */}
-                <User name={p.name} id={p._id} me={props.me} />
+                <Swipe name={p.name} id={p._id} me={props.me} />
             </div>
     })
 
     return(
         <div>
-            <h1>I am swipe</h1>
             {printAllUsers}
          
             {/* <p>{props.name}</p> */}
@@ -24,4 +23,4 @@ function Swipe(props) {
     )
 }
 
-export default Swipe;
+export default Sort;
