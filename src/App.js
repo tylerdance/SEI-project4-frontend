@@ -10,7 +10,7 @@ import Profile from './components/Profile';
 import Signup from './components/Signup';
 import Login from './components/Login';
 // import About from './Components/About';
-import ChatRoom from "./components/chat/ChatRoom"
+import ChatRoom from "./components/chat/Notifications"
 import Chat from "./components/chat/Chat"
 
 const PrivateRoute = ({ component: Component, ...rest }) => {

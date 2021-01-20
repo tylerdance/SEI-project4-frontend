@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ChatRoom from './chat/ChatRoom'
+import ChatRoom from './chat/Notifications'
 
 const Profile = (props) => {
     console.log(props);
