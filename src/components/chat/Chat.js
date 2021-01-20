@@ -16,9 +16,9 @@ const Chat = (props) => {
         onChange={handleRoomNameChange}
         className="text-input-field"
       /> */}
-      <Link to={`/chat/${props.id}`} className="enter-room-button">
+      {/* <Link to={`/chat/${props.id}`} className="enter-room-button">
         Join room
-      </Link>
+      </Link> */}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ChatRoom from './chat/ChatRoom'
 
 const Profile = (props) => {
     console.log(props);
@@ -21,6 +22,7 @@ const Profile = (props) => {
     
     return (
         <div>
+            <ChatRoom id={props.user._id} />
             { props.user ? userData : errorDiv() }
         </div>
     );

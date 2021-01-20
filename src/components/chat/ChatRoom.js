@@ -1,37 +1,59 @@
-import React, { useState } from "react";
+import axios from "axios";
+import Axios from 'axios'
+import React, { useEffect, useState } from "react";
 import useChat from "./useChat";
+import Swipe from './Swipe'
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const ChatRoom = (props) => {
-    const { roomId } = props.match.params; 
-    const user = props.user.name// Gets roomId from URL
-    const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
-    const [newMessage, setNewMessage] = useState("");
-    
-    // const [currentUser, serCurrentUser] = useState(props.user.name)
+  const { roomId } = props.match.params; 
+  const user = props.user.name// Gets roomId from URL
+  const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
+  const [newMessage, setNewMessage] = useState("");
+  const [account, setAccount] = useState([]);
+  
+  // const [currentUser, serCurrentUser] = useState(props.user.name)
 
-    const handleNewMessageChange = (event) => {
-      setNewMessage(event.target.value);
-      console.log(props.user.name)
-      console.log(user + '!!!!!!')
-    };
+  // const handleNewMessageChange = (event) => {
+  //   setNewMessage(event.target.value);
+  //   console.log(props.user.name)
+  //   console.log(user + '!!!!!!')
+  // };
 
- 
-    
+  // const handleSendMessage = () => {
+  //   sendMessage(newMessage);
+  //   setNewMessage("");
+  //   alert("Your like has been sent!!")
+  // };
 
-    const handleSendMessage = () => {
-      sendMessage(newMessage);
-      setNewMessage("");
-      alert("Your like has been sent!!")
-    };
+  const getAllUsers = () => {
+    Axios.get(`${REACT_APP_SERVER_URL}/api/users/users`)
+    .then(async res => {
+      console.log(res.data);
+      await setAccount(res.data.user)
+      console.log(account);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+  
+  useEffect(() => {
+    getAllUsers()
+  }, [])
 
-    return (
+  useEffect(() => {   
+  }, [])
+  console.log(account);
+
+  return (
+    <div>
+      <Swipe user={account} me={props.user.name} />
       <div className="chat-room-container">
         <h1>{props.user.name}</h1>
         <h1 className="room-name">Room: {roomId}</h1>
         <div className="messages-container">
           <div className="messages-list">
             {messages.map((message, i) => (
-              
               <p
                 key={i}
                 className={`message-item ${
@@ -49,24 +71,24 @@ const ChatRoom = (props) => {
             ))}
           </div>
         </div>
-        { props.user.id !== roomId ?
+        { props.user.id !== roomId 
+        ?
          <div>
-        
         {/* <textarea
           value={newMessage}
           onChange={handleNewMessageChange}
           placeholder="Write message..."
           className="new-message-input-field"
         /> */}
-       
-        <button onClick={handleSendMessage} className="send-message-button">
+        {/* <button onClick={handleSendMessage} className="send-message-button">
           Like
-        </button> 
-        </div> : 
+        </button>  */}
+        </div> 
+        : 
         <div></div>
         }
       </div>
-    )};
-;
+    </div>
+)};
 
 export default ChatRoom;
