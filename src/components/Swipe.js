@@ -3,11 +3,12 @@ import React, { useState } from "react";
 
 function Swipe(props) {
  
-  console.log(props)
+  console.log(props.id)
     const roomId = props.user._id; 
     const user = props.me // Gets roomId from URL
-    const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
-    const [newMessage, setNewMessage] = useState("");
+    const id = props.id
+    const { messages, sendMessage } = useChat(roomId, user, id); // Creates a websocket and manages messaging
+    const [newMessage, setNewMessage] = useState("Your profile was liked by...");
     // const [account, setAccount] = useState([]);
     
  
@@ -19,9 +20,10 @@ function Swipe(props) {
     };
   
     const handleSendMessage = () => {
+      document.querySelector('#likeButton').style.display="none";
       console.log(roomId);
       sendMessage(newMessage);
-      setNewMessage("liked");
+      setNewMessage("Your profile was liked by...");
       alert("Your like has been sent!!")
     };
 
@@ -46,10 +48,10 @@ function Swipe(props) {
         
           {/* <p> Your profile was liked by</p> */}
           {/* <p>{messages.senderId}</p>  */}
-          <button onClick={handleSendMessage} className="send-message-button">
+          <button id="likeButton" onClick={handleSendMessage} className="send-message-button">
             Like
           </button>
-          <button onClick={handleSwipeChange}>Swipe</button>
+          <button  onClick={handleSwipeChange}>Swipe</button>
         </div>
     )
 }

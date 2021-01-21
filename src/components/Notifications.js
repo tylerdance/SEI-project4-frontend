@@ -6,6 +6,8 @@ import Sort from './Sort'
 import ImageUpload from './ImageUpload'
 import Image from './Image'
 import Others from './Others'
+import Response from './Response'
+import Chat from './chat/Chat'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Notifications = (props) => {
@@ -19,7 +21,7 @@ const Notifications = (props) => {
   const [info, setInfo] = useState([]);
   const [reload, setReload] = useState(true)
 
- 
+
   
 
 
@@ -69,12 +71,7 @@ function getMyInfo (route){
   // const information = info && info.length ? info : ''
   return (
     <div>
-      <div id="profile">
-      <Image email={props.user.email} pic={pic}/>
-      <ImageUpload email={props.user.email} pic={setPic}/>
-      <Others user={props.user} info={info}/>
-      </div>
-      <div className="chat-room-container">
+          <div className="chat-room-container">
         <div className="messages-container">
           <div className="messages-list">
             {messages.map((message, i) => (
@@ -87,8 +84,11 @@ function getMyInfo (route){
                 { props.user.id !== roomId ?
                 <div></div> :
                 <div>
-               <p> Your profile was liked by</p>
+               <p> {message.body}</p>
                <p>{message.senderId}</p> 
+               <p>{message.id}</p> 
+               < Response room={message.id} name={props.user.name} id ={props.user.id}/>
+              
                </div>
               }
               </p>
@@ -112,8 +112,14 @@ function getMyInfo (route){
         <div></div>
         }
       </div>
+      <div id="profile">
+      <Image email={props.user.email} pic={pic}/>
+      <ImageUpload email={props.user.email} pic={setPic}/>
+      <Others user={props.user} info={info}/>
+      </div>
+  
       <div id="home">
-      <Sort user={account} me={props.user.name} pic={props.user.image_url} toggle={getRandomUser}/>
+      <Sort user={account} me={props.user.name} id={props.user.id} pic={props.user.image_url} toggle={getRandomUser}/>
       </div>
     </div>
 )};
