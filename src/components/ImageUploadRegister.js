@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 class ImageUploadRegister extends Component {
     constructor(props) {
         super(props);

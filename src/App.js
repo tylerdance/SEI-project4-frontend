@@ -1,3 +1,4 @@
+import Axios from 'axios'
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
@@ -6,12 +7,13 @@ import './App.css';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Profile from './components/Profile';
+
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 // import About from './Components/About';
 import Notifications from "./components/Notifications"
 import Chat from "./components/chat/Chat"
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = localStorage.getItem('jwtToken');
@@ -24,7 +26,14 @@ function App() {
   // Set state values
   const [currentUser, setCurrentUser] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+
+
+  
+
+
+
   useEffect(() => {
+
     let token;
     // if there is no token in localStorage, then the user is in authenticated
     if (!localStorage.getItem('jwtToken')) {
@@ -63,7 +72,7 @@ function App() {
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} />
           {/* <PrivateRoute path="/profile" component={ Profile } user={currentUser}/> */}
           <Route exact path="/chat" component={Chat} user={currentUser}/>
-          <PrivateRoute exact path="/chat/:roomId" component={Notifications} user={currentUser} />
+          <PrivateRoute exact path="/chat/:roomId" component={Notifications}  user={currentUser} />
         </Switch>
       </div>
       <Footer />

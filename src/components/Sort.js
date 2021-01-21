@@ -14,9 +14,10 @@ function Sort(props) {
     //         </div>
     // })
     const randomUser = props.user && props.user.length ? props.user[0] : ''
+    console.log(props.user)
     return(
         <div>
-            <Swipe user={randomUser}/>
+            <Swipe user={randomUser} me={props.me} room={props.user._id}/>
          
             {/* <p>{props.name}</p> */}
         </div>

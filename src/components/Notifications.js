@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import Axios from 'axios'
 import React, { useEffect, useState } from "react";
 import useChat from "./chat/useChat";
@@ -9,67 +9,68 @@ import Others from './Others'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Notifications = (props) => {
-  const { roomId } = props.match.params; 
+  console.log(props.user)
+  const  { roomId } = props.match.params; 
   const user = props.user.name// Gets roomId from URL
   const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
   const [newMessage, setNewMessage] = useState("");
   const [account, setAccount] = useState([]);
   const [pic, setPic] = useState(false);
+  const [info, setInfo] = useState([]);
+
+ 
   
-  // const [currentUser, serCurrentUser] = useState(props.user.name)
-
-  // const handleNewMessageChange = (event) => {
-  //   setNewMessage(event.target.value);
-  //   console.log(props.user.name)
-  //   console.log(user + '!!!!!!')
-  // };
-
-  // const handleSendMessage = () => {
-  //   sendMessage(newMessage);
-  //   setNewMessage("");
-  //   alert("Your like has been sent!!")
-  // };
-
-  // const getAllUsers = () => {
-  //   Axios.get(`${REACT_APP_SERVER_URL}/api/users/users`)
-  //   .then(async res => {
-  //     console.log(res.data);
-  //     await setAccount(res.data.user)
-  //     console.log(account);
-  //   }).catch(err => {
-  //     console.log(err);
-  //   })
-  // }
 
 
     // get random user
 const getRandomUser = () => {
+  if(!props.user.email){
+    return
+  }
       Axios.get(`${REACT_APP_SERVER_URL}/api/users/users/random`)
-      .then(async res => {
+      .then(res => {
         
-        await setAccount(res.data.user)
-        console.log(res.data.user);
-      }).catch(err => {
+        setAccount(res.data.user)
+        console.log(res.data.user);})
+      .catch(err => {
         console.log(err);
   })
 }
 
+  
+function getMyInfo (route){
+  if(!props.user.email){
+    return
+  }
+  Axios.get(route)
+  .then(res =>{
+    console.log(props.user.email)
+    console.log(res.data)
+    setInfo(res.data.user[0])
+    console.log(info)
+     
+     })
+  .catch(err=>{
+      console.log(err)
+  })
+
+}
 
 
   
   useEffect(() => {
     getRandomUser()
-  }, [])
+    getMyInfo (`${REACT_APP_SERVER_URL}/api/users/myinfo/${props.user.email}`)
+  }, [props.user.email])
 
-  useEffect(() => {   
-  }, [])
-  console.log(account);
 
+  console.log(props.info);
+  // const information = info && info.length ? info : ''
   return (
     <div>
       <Image email={props.user.email} pic={pic}/>
       <ImageUpload email={props.user.email} pic={setPic}/>
-      <Others user={props.user} />
+      <Others user={props.user} info={info}/>
       <div className="chat-room-container">
         <div className="messages-container">
           <div className="messages-list">
@@ -108,7 +109,7 @@ const getRandomUser = () => {
         <div></div>
         }
       </div>
-      <Sort user={account} me={props.user.name} pic={props.user.image_url}/>
+      <Sort user={account} me={props.user.name} pic={props.user.image_url} />
     </div>
 )};
 

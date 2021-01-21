@@ -2,7 +2,9 @@ import useChat from "./chat/useChat";
 import React, { useState } from "react";
 
 function Swipe(props) {
-    const roomId = props.id; 
+ 
+  console.log(props)
+    const roomId = props.user._id; 
     const user = props.me // Gets roomId from URL
     const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
     const [newMessage, setNewMessage] = useState("");

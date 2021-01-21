@@ -60,7 +60,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(typeof age)
-        if (password === confirmPassword && password.length >= 8 && age >17 && photo!=="" && age !== "" && name!=="" && gender!=="") {
+        if (password === confirmPassword && password.length >= 8 && age >17 && photo!=="" && age !== "" && name!=="" && gender!=="" && preference !== "") {
             const newUser = { name, email, password, age, gender, bio, preference, photo };
             await axios.post(`${REACT_APP_SERVER_URL}/api/users/register`, newUser)
             .then(response => {
@@ -83,7 +83,9 @@ const Signup = () => {
             alert("must register a name")
         }else if(gender===""){
             alert("must specify gender")
-        }
+        }else if(gender===""){
+             alert("must specify preference")
+    }
     }
 
     if (redirect) return <Redirect to='/login' />

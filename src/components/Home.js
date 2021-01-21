@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import Notifications from './chat/Notifications'
 
-const Profile = (props) => {
+const Home = (props) => {
     console.log(props);
     const userData = props.user ? 
     (<div>
@@ -28,4 +28,4 @@ const Profile = (props) => {
 
 }
 
-export default Profile;
+export default Home;
