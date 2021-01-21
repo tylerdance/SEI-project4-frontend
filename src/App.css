@@ -20,5 +20,15 @@ body {
 }
 
 #user-name {
-  margin: 10px;
+  
+}
+
+#profilePic{
+  display: inline-block;
+  margin: 0px;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 100%;
+  position: relative;
 }

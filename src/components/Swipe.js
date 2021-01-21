@@ -8,7 +8,7 @@ function Swipe(props) {
     const [newMessage, setNewMessage] = useState("");
     // const [account, setAccount] = useState([]);
     
-    const [currentUser, serCurrentUser] = useState(props.name)
+ 
   
     const handleNewMessageChange = (event) => {
       setNewMessage(event.target.value);
@@ -25,8 +25,16 @@ function Swipe(props) {
     
     return(
         <div className="like-button">
-          <p id="user-name">{props.name} </p>
-          {/* <p>{props.id}</p> */}
+          <img id="profilePic" src={props.user.image_url} />
+          <div>
+          <p id="user-name">Name: {props.user.name}</p>
+          <p>Age: {props.user.age}</p> 
+          <p>Bio: {props.user.bio}</p> 
+          <p>Gender :{props.user.gender}</p> 
+          <p>Likes: {props.user.preference}</p> 
+          </div>
+        
+        
           {/* <p> Your profile was liked by</p> */}
           {/* <p>{messages.senderId}</p>  */}
           <button onClick={handleSendMessage} className="send-message-button">

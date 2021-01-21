@@ -18,13 +18,13 @@ const Login = (props) => {
         setPassword(e.target.value);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const userData = { email, password };
-
-        axios.post(`${REACT_APP_SERVER_URL}/api/users/login`, userData)
+        await axios.post(`${REACT_APP_SERVER_URL}/api/users/login`, userData)
         .then(response => {
             const { token } = response.data;
+            console.log(response.data)
             // Save token to localStorage
             localStorage.setItem('jwtToken', token);
             // Set token to auth header
@@ -35,7 +35,8 @@ const Login = (props) => {
             props.nowCurrentUser(decoded);
         })
         .catch(error =>{
-            console.log(error);
+            // console.log(error);
+            alert('Either email or password is incorrect')
         })
     }
 
@@ -55,6 +56,7 @@ const Login = (props) => {
                             <label htmlFor="password">Password</label>
                             <input type="password" name="password" value={password} onChange={handlePassword} className="form-control" />
                         </div>
+                        
                         <button type="submit" className="btn btn-primary float-right">Submit</button>
                     </form>
                 </div>

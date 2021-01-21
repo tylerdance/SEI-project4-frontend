@@ -3,6 +3,9 @@ import Axios from 'axios'
 import React, { useEffect, useState } from "react";
 import useChat from "./chat/useChat";
 import Sort from './Sort'
+import ImageUpload from './ImageUpload'
+import Image from './Image'
+import Others from './Others'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Notifications = (props) => {
@@ -11,6 +14,7 @@ const Notifications = (props) => {
   const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
   const [newMessage, setNewMessage] = useState("");
   const [account, setAccount] = useState([]);
+  const [pic, setPic] = useState(false);
   
   // const [currentUser, serCurrentUser] = useState(props.user.name)
 
@@ -26,19 +30,35 @@ const Notifications = (props) => {
   //   alert("Your like has been sent!!")
   // };
 
-  const getAllUsers = () => {
-    Axios.get(`${REACT_APP_SERVER_URL}/api/users/users`)
-    .then(async res => {
-      console.log(res.data);
-      await setAccount(res.data.user)
-      console.log(account);
-    }).catch(err => {
-      console.log(err);
-    })
-  }
+  // const getAllUsers = () => {
+  //   Axios.get(`${REACT_APP_SERVER_URL}/api/users/users`)
+  //   .then(async res => {
+  //     console.log(res.data);
+  //     await setAccount(res.data.user)
+  //     console.log(account);
+  //   }).catch(err => {
+  //     console.log(err);
+  //   })
+  // }
+
+
+    // get random user
+const getRandomUser = () => {
+      Axios.get(`${REACT_APP_SERVER_URL}/api/users/users/random`)
+      .then(async res => {
+        
+        await setAccount(res.data.user)
+        console.log(res.data.user);
+      }).catch(err => {
+        console.log(err);
+  })
+}
+
+
+
   
   useEffect(() => {
-    getAllUsers()
+    getRandomUser()
   }, [])
 
   useEffect(() => {   
@@ -47,8 +67,10 @@ const Notifications = (props) => {
 
   return (
     <div>
+      <Image email={props.user.email} pic={pic}/>
+      <ImageUpload email={props.user.email} pic={setPic}/>
+      <Others user={props.user} />
       <div className="chat-room-container">
-        <h1>{props.user.name}</h1>
         <div className="messages-container">
           <div className="messages-list">
             {messages.map((message, i) => (
@@ -86,7 +108,7 @@ const Notifications = (props) => {
         <div></div>
         }
       </div>
-      <Sort user={account} me={props.user.name} />
+      <Sort user={account} me={props.user.name} pic={props.user.image_url}/>
     </div>
 )};
 
