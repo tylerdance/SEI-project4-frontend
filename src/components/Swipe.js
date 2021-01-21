@@ -7,7 +7,8 @@ function Swipe(props) {
     const roomId = props.user._id; 
     const user = props.me // Gets roomId from URL
     const id = props.id
-    const { messages, sendMessage } = useChat(roomId, user, id); // Creates a websocket and manages messaging
+    const type ="swipe"
+    const { messages, sendMessage } = useChat(roomId, user, id, type); // Creates a websocket and manages messaging
     const [newMessage, setNewMessage] = useState("Your profile was liked by...");
     // const [account, setAccount] = useState([]);
     

@@ -6,7 +6,7 @@ const Chat = (props) => {
     const handleRoomNameChange = (event) => {
     setText(event.target.value);
   };
-
+console.log(props)
   return (
     <div className="home-container">
       <h1>start texting!!!</h1>

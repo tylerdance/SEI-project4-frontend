@@ -87,7 +87,8 @@ function getMyInfo (route){
                <p> {message.body}</p>
                <p>{message.senderId}</p> 
                <p>{message.id}</p> 
-               < Response room={message.id} name={props.user.name} id ={props.user.id}/>
+               <p>{message.type}</p> 
+               < Response room={message.id} name={props.user.name} id ={props.user.id} type={message.type}/>
               
                </div>
               }
