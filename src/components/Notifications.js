@@ -17,6 +17,7 @@ const Notifications = (props) => {
   const [account, setAccount] = useState([]);
   const [pic, setPic] = useState(false);
   const [info, setInfo] = useState([]);
+  const [reload, setReload] = useState(true)
 
  
   
@@ -68,9 +69,11 @@ function getMyInfo (route){
   // const information = info && info.length ? info : ''
   return (
     <div>
+      <div id="profile">
       <Image email={props.user.email} pic={pic}/>
       <ImageUpload email={props.user.email} pic={setPic}/>
       <Others user={props.user} info={info}/>
+      </div>
       <div className="chat-room-container">
         <div className="messages-container">
           <div className="messages-list">
@@ -109,7 +112,9 @@ function getMyInfo (route){
         <div></div>
         }
       </div>
-      <Sort user={account} me={props.user.name} pic={props.user.image_url} />
+      <div id="home">
+      <Sort user={account} me={props.user.name} pic={props.user.image_url} toggle={getRandomUser}/>
+      </div>
     </div>
 )};
 

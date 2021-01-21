@@ -32,3 +32,13 @@ body {
   border-radius: 100%;
   position: relative;
 }
+
+#profile {
+  background-color: blueviolet;
+  display: none;
+}
+
+#profile {
+
+  display: all;
+}

@@ -40,7 +40,8 @@ const Login = (props) => {
         })
     }
 
-    if (props.user) return <Redirect to='/profile' />
+    const notification = `/chat/${props.user.id}`
+    if (props.user) return <Redirect to={notification} />
 
     return (
         <div className="row mt-4">

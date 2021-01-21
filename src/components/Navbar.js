@@ -4,7 +4,17 @@ import { NavLink, Link } from 'react-router-dom';
 const Navbar = (props) => {
 
     const notification = `/chat/${props.user.id}`
+    function revealProfile(){
+        console.log('hi!')
+        document.querySelector('#profile').style.display="block";
+        document.querySelector('#home').style.display="none";
+    }
 
+    function revealHome(){
+        console.log('hi!')
+        document.querySelector('#home').style.display="block";
+        document.querySelector('#profile').style.display="none";
+    }
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
@@ -22,7 +32,10 @@ const Navbar = (props) => {
                         props.isAuth 
                         ? <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <NavLink className="nav-link" to={notification}>Home</NavLink>
+                            <button  onClick={revealHome}>Home</button>
+                            </li>
+                            <li className="nav-item">
+                                <button  onClick={revealProfile}>Profile</button>
                             </li>
                             <li className="nav-item">
                                 <span onClick={props.handleLogout} className="nav-link logout-link">Logout</span>

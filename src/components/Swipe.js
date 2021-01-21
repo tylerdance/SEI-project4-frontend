@@ -24,6 +24,13 @@ function Swipe(props) {
       setNewMessage("liked");
       alert("Your like has been sent!!")
     };
+
+    const handleSwipeChange = () =>{
+      console.log(props)
+      
+      props.toggle()
+   
+    }
     
     return(
         <div className="like-button">
@@ -42,6 +49,7 @@ function Swipe(props) {
           <button onClick={handleSendMessage} className="send-message-button">
             Like
           </button>
+          <button onClick={handleSwipeChange}>Swipe</button>
         </div>
     )
 }

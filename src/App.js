@@ -67,12 +67,15 @@ function App() {
       <div className="container mt-5">
         <Switch>
           <Route path='/signup' component={Signup} />
+        
           <Route 
             path='/login' 
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} />
           {/* <PrivateRoute path="/profile" component={ Profile } user={currentUser}/> */}
           <Route exact path="/chat" component={Chat} user={currentUser}/>
           <PrivateRoute exact path="/chat/:roomId" component={Notifications}  user={currentUser} />
+         
+        
         </Switch>
       </div>
       <Footer />

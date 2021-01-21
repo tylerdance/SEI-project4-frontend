@@ -17,7 +17,7 @@ function Sort(props) {
     console.log(props.user)
     return(
         <div>
-            <Swipe user={randomUser} me={props.me} room={props.user._id}/>
+            <Swipe toggle={props.toggle} user={randomUser} me={props.me} room={props.user._id}/>
          
             {/* <p>{props.name}</p> */}
         </div>
