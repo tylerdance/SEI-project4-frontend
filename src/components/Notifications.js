@@ -72,17 +72,21 @@ function getMyInfo (route){
   return (
     <div>
           <div className="chat-room-container">
+         
         <div className="messages-container">
           <div className="messages-list">
+       
             {messages.map((message, i) => (
+              
               <p
                 key={i}
                 className={`message-item ${
                   message.ownedByCurrentUser ? "my-message" : "received-message"
                 }`}
               > 
+               
                 { props.user.id !== roomId ?
-                <div></div> :
+                <div>{message.body}</div> :
                 <div id="chatBox">
                   <img className="profilePic" src={message.image}/>
                    <p>{message.senderId} says:</p>
