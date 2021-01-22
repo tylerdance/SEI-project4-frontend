@@ -1,21 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{useState} from "react";
+
 
 const Chat = (props) => {
-    const [roomName, setRoomName] = React.useState("");
+    const [text, setText] = useState("");
     const handleRoomNameChange = (event) => {
-    setRoomName(event.target.value);
+    setText(event.target.value);
   };
-
+console.log(props)
   return (
     <div className="home-container">
-      {/* <input
+  
+      <input
         type="text"
-        placeholder="Room"
-        value={roomName}
+        placeholder="enter message"
+        value={text}
         onChange={handleRoomNameChange}
         className="text-input-field"
-      /> */}
+      />
       {/* <Link to={`/chat/${props.id}`} className="enter-room-button">
         Join room
       </Link> */}

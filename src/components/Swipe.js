@@ -3,11 +3,15 @@ import React, { useState } from "react";
 
 function Swipe(props) {
  
-  console.log(props)
+  console.log(props.id)
     const roomId = props.user._id; 
     const user = props.me // Gets roomId from URL
-    const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
-    const [newMessage, setNewMessage] = useState("");
+    const id = props.id
+    const type ="swipe"
+    const image =props.pic
+    console.log(props)
+    const { messages, sendMessage } = useChat(roomId, user, id, type, image); // Creates a websocket and manages messaging
+    const [newMessage, setNewMessage] = useState(`I like your profile!`);
     // const [account, setAccount] = useState([]);
     
  
@@ -19,9 +23,10 @@ function Swipe(props) {
     };
   
     const handleSendMessage = () => {
+      document.querySelector('#likeButton').style.display="none";
       console.log(roomId);
       sendMessage(newMessage);
-      setNewMessage("liked");
+      setNewMessage(`Your profile was liked by ${props.me}`);
       alert("Your like has been sent!!")
     };
 
@@ -33,23 +38,27 @@ function Swipe(props) {
     }
     
     return(
+      <div>
         <div className="like-button">
-          <img id="profilePic" src={props.user.image_url} />
-          <div>
-          <p id="user-name">Name: {props.user.name}</p>
+           <button id="likeButton" onClick={handleSendMessage} className="swipe">
+            Like
+          </button>
+          <div id="me">
+          <img className="profilePic" src={props.user.image_url} />
+          
+          <p id="user-name">{props.user.name}</p>
           <p>Age: {props.user.age}</p> 
           <p>Bio: {props.user.bio}</p> 
-          <p>Gender :{props.user.gender}</p> 
+          <p>Gender: {props.user.gender}</p> 
           <p>Likes: {props.user.preference}</p> 
           </div>
         
         
           {/* <p> Your profile was liked by</p> */}
           {/* <p>{messages.senderId}</p>  */}
-          <button onClick={handleSendMessage} className="send-message-button">
-            Like
-          </button>
-          <button onClick={handleSwipeChange}>Swipe</button>
+         
+          <button className="swipe" onClick={handleSwipeChange}>Swipe</button>
+        </div>
         </div>
     )
 }
