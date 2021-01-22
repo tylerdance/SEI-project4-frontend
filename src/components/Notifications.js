@@ -45,6 +45,7 @@ function getMyInfo (route){
   if(!props.user.email){
     return
   }
+  
   Axios.get(route)
   .then(res =>{
     console.log(props.user.email)
@@ -72,29 +73,26 @@ function getMyInfo (route){
   return (
     <div>
           <div className="chat-room-container">
-         
         <div className="messages-container">
           <div className="messages-list">
-       
             {messages.map((message, i) => (
-              
               <p
                 key={i}
                 className={`message-item ${
                   message.ownedByCurrentUser ? "my-message" : "received-message"
                 }`}
               > 
-               
                 { props.user.id !== roomId ?
-                <div>{message.body}</div> :
+                <div>
+                <h1>Hey!!!</h1>
+                </div> :
                 <div id="chatBox">
                   <img className="profilePic" src={message.image}/>
                    <p>{message.senderId} says:</p>
-                   
                <p> {message.body}</p>
                
                {/* <p>{message.id}</p>  */}
-               <p>{message.type}</p> 
+               {/* <p>{message.type}</p>  */}
                < Response room={message.id} name={props.user.name} id ={props.user.id} type={message.type} pic={info.image_url}/>
               
                </div>

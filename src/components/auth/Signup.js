@@ -136,6 +136,7 @@ const Signup = () => {
                         <div className="form-group">
                             <label htmlFor="Preference">Preference</label>
                             <select name="preference" id="preference"  onChange={handlePreference}>
+                            <option value="">Choose your preference</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Both">Both</option>

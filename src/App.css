@@ -82,3 +82,7 @@ body {
   width: 60px;
   border: 4px solid rgba(214, 123, 123, 0.486);
 }
+
+.youSay {
+  text-align: right;
+}

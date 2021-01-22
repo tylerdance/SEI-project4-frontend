@@ -9,8 +9,9 @@ function Swipe(props) {
     const id = props.id
     const type ="swipe"
     const image =props.pic
+    const time = Date.now()
     console.log(props)
-    const { messages, sendMessage } = useChat(roomId, user, id, type, image); // Creates a websocket and manages messaging
+    const { messages, sendMessage } = useChat(roomId, user, id, type, image, time); // Creates a websocket and manages messaging
     const [newMessage, setNewMessage] = useState(`I like your profile!`);
     // const [account, setAccount] = useState([]);
     
