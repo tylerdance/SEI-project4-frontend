@@ -5,7 +5,7 @@ const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const SOCKET_SERVER_URL = REACT_APP_SERVER_URL
 
-const useChat = (roomId, user, id, type) => {
+const useChat = (roomId, user, id, type, image) => {
   const [messages, setMessages] = useState([]); // Sent and received messages
   const socketRef = useRef();
   useEffect(() => {
@@ -38,7 +38,8 @@ const useChat = (roomId, user, id, type) => {
     //   senderId: socketRef.current.id
       senderId: user,
       id: id,
-      type: type
+      type: type,
+      image: image
     });
   };
   

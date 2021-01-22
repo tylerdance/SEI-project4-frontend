@@ -67,7 +67,7 @@ function getMyInfo (route){
   }, [props.user.email])
 
 
-  console.log(props.info);
+  console.log(info);
   // const information = info && info.length ? info : ''
   return (
     <div>
@@ -83,12 +83,14 @@ function getMyInfo (route){
               > 
                 { props.user.id !== roomId ?
                 <div></div> :
-                <div>
+                <div id="chatBox">
+                  <img className="profilePic" src={message.image}/>
+                   <p>{message.senderId} says:</p>
                <p> {message.body}</p>
-               <p>{message.senderId}</p> 
-               <p>{message.id}</p> 
-               <p>{message.type}</p> 
-               < Response room={message.id} name={props.user.name} id ={props.user.id} type={message.type}/>
+               
+               {/* <p>{message.id}</p>  */}
+               {/* <p>{message.type}</p>  */}
+               < Response room={message.id} name={props.user.name} id ={props.user.id} type={message.type} pic={info.image_url}/>
               
                </div>
               }
@@ -120,7 +122,7 @@ function getMyInfo (route){
       </div>
   
       <div id="home">
-      <Sort user={account} me={props.user.name} id={props.user.id} pic={props.user.image_url} toggle={getRandomUser}/>
+      <Sort user={account} me={props.user.name} id={props.user.id} pic={info.image_url} toggle={getRandomUser}/>
       </div>
     </div>
 )};

@@ -9,7 +9,7 @@ const Chat = (props) => {
 console.log(props)
   return (
     <div className="home-container">
-      <h1>start texting!!!</h1>
+  
       <input
         type="text"
         placeholder="enter message"

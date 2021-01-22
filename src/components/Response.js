@@ -7,8 +7,9 @@ function Response (props){
     const user = props.name // Gets roomId from URL
     const id = props.id
     const type = "chat"
-    const { messages, sendMessage } = useChat(roomId, user, id, type ); // Creates a websocket and manages messaging
-    const [newMessage, setNewMessage] = useState("Let's Chat(message)");
+    const image = props.pic
+    const { messages, sendMessage } = useChat(roomId, user, id, type, image ); // Creates a websocket and manages messaging
+    const [newMessage, setNewMessage] = useState("Let's Chat");
   
     const handleSendMessage = () => {
         document.getElementById(`${props.room}`).style.display="block"
@@ -50,7 +51,7 @@ function Response (props){
                     <div className="chat" id={props.room}>
                         <Chat chat={handleChat} />
                     </div>
-                    <button  id="initiateChat" onClick={handleSendMessage}>Initiate Chat</button>
+                    <button  id="initiateChat" onClick={handleSendMessage}>Chat</button>
                 </div>
 
            }
