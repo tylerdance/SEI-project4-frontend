@@ -53,7 +53,7 @@ body {
 
 .chat-room-container{
   border-bottom:solid 3px black;
-  height: 300px;
+  /* height: 300px; */
 }
 
 #chatBox{

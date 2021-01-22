@@ -86,10 +86,11 @@ function getMyInfo (route){
                 <div id="chatBox">
                   <img className="profilePic" src={message.image}/>
                    <p>{message.senderId} says:</p>
+                   
                <p> {message.body}</p>
                
                {/* <p>{message.id}</p>  */}
-               {/* <p>{message.type}</p>  */}
+               <p>{message.type}</p> 
                < Response room={message.id} name={props.user.name} id ={props.user.id} type={message.type} pic={info.image_url}/>
               
                </div>

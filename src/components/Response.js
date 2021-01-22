@@ -41,7 +41,7 @@ function Response (props){
               
                 <div className="blue" id={props.room}>
                   
-                     <Chat chat={handleChat} />
+                     <Chat room={props.room} me={props.name} id={props.id} type={"chat"} pic={props.pic}/>
                      {/* <button onClick={handleChat}>Initiate Chat</button> */}
                 </div>
               
