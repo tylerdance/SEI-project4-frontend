@@ -8,6 +8,7 @@ function Response (props){
     const id = props.id
     const type = "chat"
     const image = props.pic
+    const time = Date.now()
     const { messages, sendMessage } = useChat(roomId, user, id, type, image ); // Creates a websocket and manages messaging
     const [newMessage, setNewMessage] = useState("Let's Chat");
   
