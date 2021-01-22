@@ -32,7 +32,7 @@ useEffect (()=>{
  
         return(
             <div>
-                <img id="profilePic" src={photo}/>
+                <img className="profilePic" src={photo}/>
             </div>
         )
 }
