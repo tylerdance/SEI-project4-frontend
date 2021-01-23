@@ -5,16 +5,11 @@ import DisplayOthers from './DisplayOthers'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function Others (props){
-
-
-
-
     // useEffect(() => {
       
     //     // getMyInfo()
     //   }, [props.user.email, props.account, props.info])
- 
-      
+  
     console.log(props.info)
     return(
         <div>
