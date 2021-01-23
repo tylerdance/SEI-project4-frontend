@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
+import './Profile.css';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';

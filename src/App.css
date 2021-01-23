@@ -27,24 +27,23 @@ body {
   font-weight: 900;
 }
 
-.profilePic{
+
+
+.iconPic{
   display: inline-block;
   margin: 0px;
-  width: 90px;
-  height: 90px;
+  width: 45px;
+  height: 45px;
   object-fit: cover;
   border-radius: 100%;
   position: relative;
 }
 
-#profile {
-  background-color: blueviolet;
-  display: none;
-}
 
-#profile {
 
-  display: all;
+#home {
+  flex: 50%;
+  
 }
 
 .chat {
@@ -52,16 +51,24 @@ body {
 }
 
 .chat-room-container{
-  border-bottom:solid 3px black;
+   overflow: auto;
+   height: 600px;
+   width: 400px;
+   border-radius: 10px;
+   display: flex;
+   flex-direction: column-reverse;
+
   /* height: 300px; */
 }
 
-#chatBox{
+.chatBox{
+  flex: 25%;
   margin: auto;
   padding: 20px;
   background-color: rgba(194, 113, 84, 0.466);
   width: 250px;
   border-radius: 20px;
+  
 }
 
 .swipe {
@@ -69,6 +76,7 @@ body {
   height:60px;
   width: 60px;
   border: 4px solid rgba(214, 123, 123, 0.486);
+  align-self: center;
 
 }
 
@@ -94,4 +102,18 @@ body {
 
 .youSay {
   text-align: right;
+}
+
+#namaewa {
+  color: white;
+  font-size: 20px;
+  margin-right:10px;
+}
+
+#master{
+  display: flex;
+}
+
+#userNav {
+  display: flex;
 }

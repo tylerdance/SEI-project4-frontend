@@ -28,7 +28,7 @@ function Swipe(props) {
       console.log(roomId);
       sendMessage(newMessage);
       setNewMessage(`Your profile was liked by ${props.me}`);
-      alert("Your like has been sent!!")
+      // alert("Your like has been sent!!")
     };
 
     const handleSwipeChange = () =>{
@@ -41,9 +41,7 @@ function Swipe(props) {
     return(
       <div>
         <div className="like-button">
-           <button id={props.user.image_url} onClick={handleSendMessage} className="swipe">
-            Like
-          </button>
+        <button className="swipe" onClick={handleSwipeChange}>Swipe</button>
           <div id="me">
           <img className="profilePic" src={props.user.image_url} />
           
@@ -53,12 +51,10 @@ function Swipe(props) {
           <p>Gender: {props.user.gender}</p> 
           <p>Likes: {props.user.preference}</p> 
           </div>
-        
-        
-          {/* <p> Your profile was liked by</p> */}
-          {/* <p>{messages.senderId}</p>  */}
-         
-          <button className="swipe" onClick={handleSwipeChange}>Swipe</button>
+          <button id={props.user.image_url} onClick={handleSendMessage} className="swipe">
+            Like
+          </button>
+          
         </div>
         </div>
     )

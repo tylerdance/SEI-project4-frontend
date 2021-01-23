@@ -2,15 +2,15 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-
+    console.log(props.user)
     function revealProfile(){
-        console.log('hi!')
+      
         document.querySelector('#profile').style.display="block";
         document.querySelector('#home').style.display="none";
     }
 
     function revealHome(){
-        console.log('hi!')
+       
         document.querySelector('#home').style.display="block";
         document.querySelector('#profile').style.display="none";
     }
@@ -29,17 +29,30 @@ const Navbar = (props) => {
                     </ul>
                     {
                         props.isAuth 
-                        ? <ul className="navbar-nav ml-auto">
+                         
+                        ? <div>
+                            <div id="userNav">
+                         <div>
+                            <img alt={props.user.name} src={props.user.image_url} class="iconPic"/>
+                         </div>
+                         <div id="namaewa">
+                            {props.user.name}
+                         </div>
+                            </div>
+                        <ul className="navbar-nav ml-auto">
+                             
+                           
                             <li className="nav-item">
                             <button  onClick={revealHome}>Home</button>
                             </li>
                             <li className="nav-item">
                                 <button  onClick={revealProfile}>Profile</button>
                             </li>
+                           
                             <li className="nav-item">
                                 <span onClick={props.handleLogout} className="nav-link logout-link">Logout</span>
                             </li>
-                        </ul>
+                        </ul></div>
                         : <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
                                 <NavLink className="nav-link"  to="/signup">Create Account</NavLink>

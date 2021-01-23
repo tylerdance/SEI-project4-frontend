@@ -50,13 +50,13 @@ const handleNewMessageChange = (event) => {
        
       { props.me === message.senderId?
       <div className="youSay">
-            <img className="profilePic" src={message.image}/>
+            <img className="iconPic" src={message.image}/>
             <p> {message.body}</p>
           
       </div>
       :
       <div>
-          <img className="profilePic" src={message.image}/>
+          <img className="iconPic" src={message.image}/>
           <p>{message.senderId} says:</p>
           <p> {message.body}</p>
         
