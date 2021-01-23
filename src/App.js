@@ -56,6 +56,7 @@ function App() {
       localStorage.removeItem('jwtToken');
       setCurrentUser(null);
       setIsAuthenticated(false);
+      return  <Redirect to="/" />
     }
   }
 
