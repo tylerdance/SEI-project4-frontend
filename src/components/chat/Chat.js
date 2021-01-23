@@ -48,10 +48,9 @@ const handleNewMessageChange = (event) => {
     
       <div >
        
-      { props.id === message.senderId ?
+      { props.me === message.senderId?
       <div className="youSay">
             <img className="profilePic" src={message.image}/>
-            <p>You replied :</p>
             <p> {message.body}</p>
           
       </div>
@@ -87,7 +86,7 @@ const handleNewMessageChange = (event) => {
         onChange={handleNewMessageChange}
         className="text-input-field"
       />
-      <button className="swipe" onClick={handleSendMessage}>Send</button>
+      <button className="send" onClick={handleSendMessage}>Send</button>
    
       </div>
 

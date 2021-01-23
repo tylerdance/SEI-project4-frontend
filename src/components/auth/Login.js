@@ -38,9 +38,9 @@ const Login = (props) => {
             // console.log(error);
             alert('Either email or password is incorrect')
         })
-    }
-
-    const notification = `/chat/${props.user.id}`
+    } 
+    let notification
+    if (props.user) {notification = `/chat/${props.user.id}`}
     if (props.user) return <Redirect to={notification} />
 
     return (

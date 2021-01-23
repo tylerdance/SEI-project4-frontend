@@ -2,7 +2,7 @@ import useChat from "./chat/useChat";
 import React, { useState } from "react";
 
 function Swipe(props) {
- 
+  
   console.log(props.id)
     const roomId = props.user._id; 
     const user = props.me // Gets roomId from URL
@@ -24,7 +24,7 @@ function Swipe(props) {
     };
   
     const handleSendMessage = () => {
-      document.querySelector('#likeButton').style.display="none";
+      document.getElementById(props.user.image_url).style.display="none";
       console.log(roomId);
       sendMessage(newMessage);
       setNewMessage(`Your profile was liked by ${props.me}`);
@@ -32,7 +32,7 @@ function Swipe(props) {
     };
 
     const handleSwipeChange = () =>{
-      console.log(props)
+      document.querySelector('.swipe').style.display="block";
       
       props.toggle()
    
@@ -41,7 +41,7 @@ function Swipe(props) {
     return(
       <div>
         <div className="like-button">
-           <button id="likeButton" onClick={handleSendMessage} className="swipe">
+           <button id={props.user.image_url} onClick={handleSendMessage} className="swipe">
             Like
           </button>
           <div id="me">
