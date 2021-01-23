@@ -32,7 +32,7 @@ function Swipe(props) {
     };
 
     const handleSwipeChange = () =>{
-      document.querySelector('.swipe').style.display="block";
+      document.querySelector('.this').style.display="block";
       
       props.toggle()
    
@@ -51,7 +51,7 @@ function Swipe(props) {
           <p>Gender: {props.user.gender}</p> 
           <p>Likes: {props.user.preference}</p> 
           </div>
-          <button id={props.user.image_url} onClick={handleSendMessage} className="swipe">
+          <button id={props.user.image_url} onClick={handleSendMessage} className="swipe this">
             Like
           </button>
           

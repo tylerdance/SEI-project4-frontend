@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
 import './Profile.css';
+import './Navbar.css';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';

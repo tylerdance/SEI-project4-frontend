@@ -104,16 +104,9 @@ body {
   text-align: right;
 }
 
-#namaewa {
-  color: white;
-  font-size: 20px;
-  margin-right:10px;
-}
+
 
 #master{
   display: flex;
 }
 
-#userNav {
-  display: flex;
-}
