@@ -4,7 +4,7 @@ function Footer() {
     return(
         <footer className="footer bg-dark">
             <div className="container text-center">
-                <span>Insert footer here</span>
+                <span>セトオストーケン</span>
             </div>
         </footer>
     )

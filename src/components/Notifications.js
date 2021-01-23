@@ -21,25 +21,30 @@ const Notifications = (props) => {
   const [info, setInfo] = useState([]);
   const [reload, setReload] = useState(true)
 
+  // get random user
+  const getRandomUser = () => {
 
+    let route;
 
- 
-
-    // get random user
-const getRandomUser = () => {
-
-
-    
+    if (props.user.preference !== 'Both') {
+      route = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.gender}/${props.user.preference}`
+    } else {
+      route = `${REACT_APP_SERVER_URL}/api/users/users/random`
+    }
   
-      Axios.get(`${REACT_APP_SERVER_URL}/api/users/users/${props.user.preference}`)
+
+    // const url = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.preference}`
+
+      Axios.get(route)
+
       .then(res => {
         console.log(res.data.profile)
         setAccount(res.data.profile)
       
-       }) .catch(err => {
+      }) .catch(err => {
         console.log(err);
-  })
-}
+    })
+  }
 
   
 function getMyInfo (route){
@@ -58,18 +63,14 @@ function getMyInfo (route){
   .catch(err=>{
       console.log(err)
   })
-
 }
-
-
   
   useEffect(() => {
     getRandomUser()
     getMyInfo (`${REACT_APP_SERVER_URL}/api/users/myinfo/${props.user.email}`)
   }, [props.user.email])
 
-
-  console.log(info);
+  // console.log(info);
   // const information = info && info.length ? info : ''
   return (
     <div>
