@@ -22,20 +22,21 @@ const Notifications = (props) => {
   const [reload, setReload] = useState(true)
 
 
-  
 
+ 
 
     // get random user
 const getRandomUser = () => {
-  if(!props.user.email){
-    return
-  }
-      Axios.get(`${REACT_APP_SERVER_URL}/api/users/users/random`)
+
+
+    
+  
+      Axios.get(`${REACT_APP_SERVER_URL}/api/users/users/${props.user.preference}`)
       .then(res => {
-        
-        setAccount(res.data.user)
-        console.log(res.data.user);})
-      .catch(err => {
+        console.log(res.data.profile)
+        setAccount(res.data.profile)
+      
+       }) .catch(err => {
         console.log(err);
   })
 }
@@ -51,7 +52,7 @@ function getMyInfo (route){
     console.log(props.user.email)
     console.log(res.data)
     setInfo(res.data.user[0])
-    console.log(info)
+    console.log(info) 
      
      })
   .catch(err=>{
