@@ -5,12 +5,12 @@ const Chat = (props) => {
   /////////////////////
   const roomId = props.room
   const user = props.me // Gets roomId from URL
-  const id = props.id
+  const id = props.room
   const type ="chat"
   const image =props.pic
   const time = Date.now()
   // console.log(props)
-  const { messages, sendMessage } = useChat(roomId, user, id, type, image, time); // Creates a websocket and manages messaging
+  const { messages, sendMessage } = useChat(roomId, user, id, type, image); // Creates a websocket and manages messaging
   const [newMessage, setNewMessage] = useState(``);
  
   /////////////////////
@@ -25,7 +25,7 @@ const handleSendMessage = (e) => {
   console.log(roomId);
   sendMessage(newMessage);
   setNewMessage(e.target.value);
-  console.log(messages)
+ 
 
 };
 
@@ -33,32 +33,6 @@ const handleNewMessageChange = (event) => {
   setNewMessage(event.target.value);
  
 };
-
- ///////////////////////////////////
-//  {messages.map((message, i) => (
-//   <p
-//     key={i}
-//     className={`message-item ${
-//       message.ownedByCurrentUser ? "my-message" : "received-message"
-//     }`}
-//   > 
-  
-//     <div >
-//       <div>Chatt!!!!!!!</div>
-//       {/* <img className="profilePic" src={message.image}/> */}
-//        <p>{message.senderId} says:</p>
-//    <p> {message.body}</p>
-
-   
-  
-//    </div>
-  
-//   </p>
-// ))}
-
-
-
-
 
   return (
     <div className="home-container">
@@ -74,18 +48,21 @@ const handleNewMessageChange = (event) => {
     
       <div >
        
-      { props.id === message.id ?
+      { props.id === message.senderId ?
       <div className="youSay">
             <img className="profilePic" src={message.image}/>
             <p>You replied :</p>
             <p> {message.body}</p>
-      </div>:
+          
+      </div>
+      :
       <div>
           <img className="profilePic" src={message.image}/>
           <p>{message.senderId} says:</p>
           <p> {message.body}</p>
+        
       </div>
-      }
+} 
 
  
 
