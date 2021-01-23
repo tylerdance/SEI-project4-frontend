@@ -83,41 +83,25 @@ function getMyInfo (route){
                   message.ownedByCurrentUser ? "my-message" : "received-message"
                 }`}
               > 
-                { props.user.id !== roomId ?
+                { props.user.id === roomId ?
                 <div>
-                <h1>Hey!!!</h1>
-                </div> :
-                <div id="chatBox">
+                 <div id="chatBox">
                   <img className="profilePic" src={message.image}/>
                    <p>{message.senderId} says:</p>
                <p> {message.body}</p>
-               
-               {/* <p>{message.id}</p>  */}
-               {/* <p>{message.type}</p>  */}
+               <p> {i}</p>
                < Response room={message.id} name={props.user.name} id ={props.user.id} type={message.type} pic={info.image_url}/>
               
                </div>
-              }
+                </div> 
+                : 
+                <div></div>
+                }
               </p>
             ))}
           </div>
         </div>
-        { props.user.id !== roomId 
-        ?
-         <div>
-        {/* <textarea
-          value={newMessage}
-          onChange={handleNewMessageChange}
-          placeholder="Write message..."
-          className="new-message-input-field"
-        /> */}
-        {/* <button onClick={handleSendMessage} className="send-message-button">
-          Like
-        </button>  */}
-        </div> 
-        : 
-        <div></div>
-        }
+     
       </div>
       <div id="profile">
       <Image email={props.user.email} pic={pic}/>
