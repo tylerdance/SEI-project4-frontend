@@ -5,12 +5,12 @@ import DisplayOthers from './DisplayOthers'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function Others (props){
-  // console.log(props.info)
+  console.log(props.user)
 
     return(
         <div>
           <h5 id="name-on-prof">{props.user.name}</h5>
-          <DisplayOthers info={props.info}/>
+          <DisplayOthers info={props.info} />
         </div>
     )
 }
