@@ -18,7 +18,7 @@ body {
   width: 430px;
   display: flex;
   justify-content: space-around;
-  background-color: rgba(161, 109, 109, 0.589);
+
   margin: auto;
   border-radius: 10px;;
 }

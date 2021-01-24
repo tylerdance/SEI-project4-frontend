@@ -1,19 +1,32 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Redirect, Route} from 'react-router-dom';
 
 const Navbar = (props) => {
     console.log(props.user)
     function revealProfile(){
-      
+        if(!document.querySelector('#profile')){
+            let notification
+                if (props.user) {notification = `/chat/${props.user.id}`}
+                    window.location.href=notification 
+       }
+        // if(!document.querySelector('#home')){
+        //     return
+        // }
         document.querySelector('#profile').style.display="block";
         document.querySelector('#home').style.display="none";
     }
 
+  
     function revealHome(){
-       
+        if(!document.querySelector('#profile')){
+            let notification
+                if (props.user) {notification = `/chat/${props.user.id}`}
+                    window.location.href=notification 
+        }
         document.querySelector('#home').style.display="block";
         document.querySelector('#profile').style.display="none";
     }
+
     return (
         <nav className="nav">
          
@@ -41,6 +54,7 @@ const Navbar = (props) => {
                             <div className="namaewa">
                                 <span onClick={props.handleLogout} className="nav-link logout-link">Logout</span>
                             </div>
+                         
                             </div>
                              
                            
