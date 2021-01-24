@@ -15,55 +15,53 @@ const Navbar = (props) => {
         document.querySelector('#profile').style.display="none";
     }
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container">
+        <nav className="nav">
+         
                 {/* <Link className="navbar-brand" to="/">Reveal</Link> */}
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="#navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarsExample07">
-                    <ul className="navbar-nav mr-auto">
-                        {/* <li className="nav-item">
-                            <NavLink className="nav-link" exact to="/chat">Chat</NavLink>
-                        </li> */}
-                    </ul>
+                
+               
                     {
                         props.isAuth 
                          
                         ? <div>
-                            <div id="userNav">
-                         <div>
-                            <img alt={props.user.name} src={props.user.image_url} class="iconPic"/>
+                            <div className="userNav">
+                         <div >
+                            <img alt={props.user.name} src={props.user.image_url} class="iconPic2"/>
                          </div>
-                         <div id="namaewa">
+                         <div className="namaewa">
                             {props.user.name}
                          </div>
+                         <div className="namaewa"> 
+                            <button  className="namaewa navbutton" onClick={revealHome}>Home</button>
                             </div>
-                        <ul className="navbar-nav ml-auto">
+                            <div className="namaewa">
+                                <button  className="namaewa navbutton" onClick={revealProfile}>Profile</button>
+                            </div>
+                            
+                            <div className="namaewa">
+                                <span onClick={props.handleLogout} className="nav-link logout-link">Logout</span>
+                            </div>
+                            </div>
                              
                            
-                            <li className="nav-item">
-                            <button  onClick={revealHome}>Home</button>
-                            </li>
-                            <li className="nav-item">
-                                <button  onClick={revealProfile}>Profile</button>
-                            </li>
                            
-                            <li className="nav-item">
-                                <span onClick={props.handleLogout} className="nav-link logout-link">Logout</span>
-                            </li>
-                        </ul></div>
-                        : <ul className="navbar-nav ml-auto">
-                            <li className="nav-item">
-                                <NavLink className="nav-link"  to="/signup">Create Account</NavLink>
-                            </li>
-                            <li className="nav-item">
+    
+                        
+                        </div>
+                        : <div className="userNav2">
+                            <div className="namaewa one">
+                        
+                                <NavLink  to="/signup">Create Account</NavLink>
+                             </div>
+                           
+                            <div className="namaewa two">
                                 <NavLink className="nav-link"  to="/login">Login</NavLink>
-                            </li>
-                        </ul>
+                            </div>
+                            </div>
+                        
                     }
-                </div>
-            </div>
+               
+          
         </nav>
     );
 }

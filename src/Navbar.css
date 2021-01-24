@@ -1,0 +1,50 @@
+
+.userNav {
+    display: flex;
+    justify-content: space-evenly;
+ }
+
+ .userNav2 {
+    display: flex;
+    justify-content: space-around;
+ }
+ 
+
+  
+.namaewa {
+    color: rgba(107, 97, 97, 0.938);
+    font-size: 20px;
+    margin:auto;
+    padding-left:30px;
+    padding-right: 30px;
+    flex: 18%;
+    text-align:center;
+  }
+
+.navbutton {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.nav {
+    background-color: rgba(24, 145, 24, 0.178);
+    text-align: center;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+    width:100%;
+  
+}
+.iconPic2{
+    display: inline-block;
+    margin: 0px;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 100%;
+    position: relative;
+    margin-left: 40px;
+    margin-right: 40px;
+    flex: 20%;
+}
+
