@@ -3,16 +3,13 @@ function DisplayOthers(props){
     
     return(
         <div>
-          
-            <p>Age: {props.info.age}</p>
-            <p>update</p>
-            <p>Bio: {props.info.bio}</p>
-            <p>update</p>
-            <p>Gender: {props.info.gender}</p>
-            <p>update</p>
+            <p>{props.info.age}</p>
+            <p>{props.info.bio}</p>
+            <p>{props.info.gender}</p>
             <p>Preference: {props.info.preference}</p>
-            <p>update</p>
-            
+            <div>
+                <button class="btn btn-outline-primary" id="edit-prof-btn">Edit info</button>
+            </div>
         </div>
     )
 }
