@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function Image (props) {
-  
+    const [pic, setPic]=useState(props.pic)
     const[photo, setPhoto]=useState([])
-
+    
     function getImage(url){
         if(!props.email){
             return
@@ -27,7 +27,7 @@ function Image (props) {
 useEffect (()=>{
     getImage(`${REACT_APP_SERVER_URL}/api/users/myphoto/${props.email}`)
 
-},[props.email])
+},[props.email, props.pic])
    
  
         return(
