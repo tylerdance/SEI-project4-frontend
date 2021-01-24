@@ -121,3 +121,8 @@ body {
 .single-notif {
   display: none;
 }
+
+#hide-notifs {
+  display: none;
+  margin: auto;
+}
