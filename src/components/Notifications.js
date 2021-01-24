@@ -45,7 +45,7 @@ const Notifications = (props) => {
       route = `${REACT_APP_SERVER_URL}/api/users/users/random`
     }
   
-  //
+  
     const url = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.preference}`
 
       Axios.get(route)
@@ -60,23 +60,23 @@ const Notifications = (props) => {
   }
 
   
-function getMyInfo (route){
-  if(!props.user.email){
-    return
+  function getMyInfo (route){
+    if(!props.user.email){
+      return
+    }
+    
+    Axios.get(route)
+    .then(res =>{
+      console.log(props.user.email)
+      console.log(res.data)
+      setInfo(res.data.user[0])
+      console.log(info) 
+      
+    })
+    .catch(err=>{
+        console.log(err)
+    })
   }
-  
-  Axios.get(route)
-  .then(res =>{
-    console.log(props.user.email)
-    console.log(res.data)
-    setInfo(res.data.user[0])
-    console.log(info) 
-     
-     })
-  .catch(err=>{
-      console.log(err)
-  })
-}
   
   useEffect(() => {
     getRandomUser()
@@ -87,57 +87,57 @@ function getMyInfo (route){
   // });
   }, [props.user.email])
 
-  // console.log(info);
+  console.log(info);
   // const information = info && info.length ? info : ''
   return (
-    <div id="master">
-       <div id="home">
-      
-      <Sort user={account} me={props.user.name} id={props.user.id} pic={info.image_url} toggle={getRandomUser}/>
-      </div>
-      <div id="profile">
-      <Image email={props.user.email} pic={pic}/>
-      <ImageUpload email={props.user.email} pic={setPic}/>
-      <Others user={props.user} info={info}/>
-      </div>
-          <div className="chat-room-container" id="notify" >
-        <div className="messages-container">
-          <div className="messages-list">
-            {messages.map((message, i) => (
-              <p
-                key={i}
-                className={`message-item ${
-                  message.ownedByCurrentUser ? "my-message" : "received-message"
-                }`}
-              > 
-                { props.user.id === roomId ?
-                
-                <div >
-                  
-                 <div class="chatBox">
-                  <img className="profilePic" src={message.image}/>
-                   <p>{message.senderId}</p>
-               <p> {message.body}</p>
-               
-               
-               </div>
-               <div class="chatBox">
-                  < Response room={message.id} name={props.user.name} id ={props.user.id} type={message.type} pic={info.image_url}/>
-                  </div>
-                </div> 
-                : 
-                <div></div>
-                }
-              </p>
-            ))}
-          </div>
-        </div>
-     
-      </div>
-   
-  
-     
+  <div id="master">
+      <div id="home">
+    
+    <Sort user={account} me={props.user.name} id={props.user.id} pic={info.image_url} toggle={getRandomUser}/>
     </div>
+    <div id="profile">
+    <Image email={props.user.email} pic={pic}/>
+    <ImageUpload email={props.user.email} pic={setPic}/>
+    <Others user={props.user} info={info}/>
+    </div>
+        <div className="chat-room-container" id="notify" >
+      <div className="messages-container">
+        <div className="messages-list">
+          {messages.map((message, i) => (
+            <p
+              key={i}
+              className={`message-item ${
+                message.ownedByCurrentUser ? "my-message" : "received-message"
+              }`}
+            > 
+              { props.user.id === roomId ?
+              
+              <div >
+                
+                <div class="chatBox">
+                <img className="profilePic" src={message.image}/>
+                  <p>{message.senderId}</p>
+              <p> {message.body}</p>
+              
+              
+              </div>
+              <div class="chatBox">
+                <Response room={message.id} name={props.user.name} id ={props.user.id} type={message.type} pic={info.image_url}/>
+                </div>
+              </div> 
+              : 
+              <div></div>
+              }
+            </p>
+          ))}
+        </div>
+      </div>
+    
+    </div>
+  
+
+    
+  </div>
 )};
 
 export default Notifications;

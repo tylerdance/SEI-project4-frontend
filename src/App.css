@@ -110,3 +110,14 @@ body {
   display: flex;
 }
 
+#my-alerts {
+  display: none;
+}
+
+#alert-content {
+  display: none;
+}
+
+.single-notif {
+  display: none;
+}

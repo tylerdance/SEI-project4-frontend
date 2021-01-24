@@ -1,5 +1,8 @@
 import useChat from "./chat/useChat";
 import React, { useState } from "react";
+import axios from "axios";
+
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function Swipe(props) {
   
@@ -10,25 +13,45 @@ function Swipe(props) {
     const type ="swipe"
     const image =props.pic
     const time = Date.now()
-    console.log(props)
+    // console.log(props)
     const { messages, sendMessage } = useChat(roomId, user, id, type, image, time); // Creates a websocket and manages messaging
     const [newMessage, setNewMessage] = useState(`I like your profile!`);
     // const [account, setAccount] = useState([]);
-    
+    const [notifications, setNotifications] = useState([])
  
   
     const handleNewMessageChange = (event) => {
       setNewMessage(event.target.value);
-      console.log(props.user.name)
-      console.log(user + '!!!!!!')
+      // console.log(props.user.name)
+      // console.log(user + '!!!!!!')
     };
   
     const handleSendMessage = () => {
       document.getElementById(props.user.image_url).style.display="none";
-      console.log(roomId);
+      // console.log(roomId);
       sendMessage(newMessage);
       setNewMessage(`Your profile was liked by ${props.me}`);
       // alert("Your like has been sent!!")
+
+      const notificationData = {
+        id: props.id,
+        content: newMessage,
+        date: Date.now(),
+        my_id: roomId,
+        type: 'swipe',
+        read: false,
+        pic: props.pic,
+        email: props.user.email,
+        name: props.me
+      }
+      console.log('i am frontend email', props.email);
+
+      axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications`, notificationData)
+      .then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
     };
 
     const handleSwipeChange = () =>{
