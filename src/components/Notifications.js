@@ -23,6 +23,7 @@ const Notifications = (props) => {
   const [scrolled, setScrolled] = useState(false)
 
 
+
     // function updateScroll(){
     //     if(!scrolled){
     //         var element = document.querySelector('#notify');
@@ -85,7 +86,7 @@ const Notifications = (props) => {
     // document.querySelector('.chat-room-container').addEventListener('scroll', function(){
     //   setScrolled(true);
   // });
-  }, [props.user.email])
+  }, [props.user.email, messages])
 
   console.log(info);
   // const information = info && info.length ? info : ''
@@ -104,6 +105,7 @@ const Notifications = (props) => {
       <div className="messages-container">
         <div className="messages-list">
           {messages.map((message, i) => (
+           
             <p
               key={i}
               className={`message-item ${

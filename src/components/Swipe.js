@@ -35,7 +35,7 @@ function Swipe(props) {
 
       const notificationData = {
         id: props.id,
-        content: newMessage,
+        content: `${props.me} liked your profile!`,
         date: Date.now(),
         my_id: roomId,
         type: 'swipe',

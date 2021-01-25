@@ -55,8 +55,9 @@ body {
    height: 600px;
    width: 400px;
    border-radius: 10px;
-   display: flex;
+   display: none;
    flex-direction: column-reverse;
+   
 
   /* height: 300px; */
 }
@@ -126,3 +127,11 @@ body {
   display: none;
   margin: auto;
 }
+
+#showNotifsDiv{
+  background-color:crimson;
+}
+
+/* #preference {
+  background-color:crimson;
+} */
