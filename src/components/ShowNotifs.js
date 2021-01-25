@@ -35,6 +35,8 @@ function ShowNotifs(props) {
                 console.log(err)
             })
         }
+
+    
         return(
             <div>
                 { p.read === false ? 
@@ -59,7 +61,7 @@ function ShowNotifs(props) {
         setAlertsLength(props.alerts.length)
 
         setAlertsLength(alertsLength - length)
-    }, [props.alerts])
+    }, [props])
 
     const handleShowNotifications = () => {
 

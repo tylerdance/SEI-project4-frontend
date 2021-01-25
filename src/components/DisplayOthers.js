@@ -38,7 +38,7 @@ function DisplayOthers(props){
     return(
         <div>
              <div id="showNotifsDiv">
-            <ShowNotifs alerts={notifications} me={props.info.name} my_email={props.info.email} pic={props.info.image_url}/>
+           
             </div>
             <p>{props.info.age}</p>
             <p>{props.info.bio}</p>
@@ -48,6 +48,7 @@ function DisplayOthers(props){
             <div>
                 <button class="btn btn-outline-primary" id="edit-prof-btn">Edit info</button>
             </div>
+            {/* <ShowNotifs alerts={notifications} me={props.info.name} my_email={props.info.email} pic={props.info.image_url}/> */}
         </div>
     )
 }

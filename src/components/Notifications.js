@@ -7,7 +7,7 @@ import ImageUpload from './ImageUpload'
 import Image from './Image'
 import Others from './Others'
 import Response from './Response'
-import Chat from './chat/Chat'
+
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Notifications = (props) => {
@@ -19,8 +19,8 @@ const Notifications = (props) => {
   const [account, setAccount] = useState([]);
   const [pic, setPic] = useState(false);
   const [info, setInfo] = useState([]);
-  const [reload, setReload] = useState(true)
-  const [scrolled, setScrolled] = useState(false)
+  const [reload, setReload] = useState(props)
+
 
 
 
@@ -92,9 +92,10 @@ const Notifications = (props) => {
   // const information = info && info.length ? info : ''
   return (
   <div id="master">
-      <div id="home">
+ 
+      <div id="swipe">
     
-    <Sort user={account} me={props.user.name} id={props.user.id} pic={info.image_url} toggle={getRandomUser}/>
+    <Sort user={account} me={props.user.name} id={props.user.id} email={props.user.email} pic={info.image_url} toggle={getRandomUser} messages={messages}/>
     </div>
     <div id="profile">
     <Image email={props.user.email} pic={pic}/>
