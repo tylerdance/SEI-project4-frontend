@@ -1,6 +1,8 @@
 import useChat from "./chat/useChat";
 import Chat from "./chat/Chat"
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function Response (props){
     
@@ -12,15 +14,38 @@ function Response (props){
  
     const { messages, sendMessage } = useChat(roomId, user, id, type, image ); // Creates a websocket and manages messaging
     const [newMessage, setNewMessage] = useState("Let's Chat");
-  
+    
     const handleSendMessage = () => {
+     
         document.getElementById(`${props.room}`).style.display="block"
         document.getElementById('initiateChat').style.display="none"
-        console.log(messages);
+        console.log(props.email);
         sendMessage(newMessage);
         setNewMessage("liked");
+/////////////////////////////////////
+const notificationData = {
+    id: props.id,
+    content: newMessage,
+    date: Date.now(),
+    my_id: props.room,
+    type: 'chat',
+    read: false,
+    pic: props.pic,
+    email: props.email,
+    name: props.name
+  }
 
-    }
+  axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications`, notificationData)
+  .then(res => {
+    console.log(res);
+  }).catch(err => {
+    console.log(err);
+  })
+//////////////////////////////////////////////////////////////////
+};
+    
+    
+    
     const handleChat =()=>{
         document.getElementById(`${props.room}`).style.display="block"
     }

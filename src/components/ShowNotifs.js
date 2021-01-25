@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
-
+import Response from './Response'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function ShowNotifs(props) {
@@ -15,7 +15,13 @@ function ShowNotifs(props) {
                 setAlertsLength(alertsLength - 1)
             }
             console.log(alertsLength);
-            document.getElementById(`${p.email[index]}`).style.display="block"
+            if(!p.email[index]){
+
+            }else{
+                document.getElementById(`${p.email[index]}`).style.display="block"
+            }
+           
+
             const userData = {
                 email: p.email,
                 id: p._id,
@@ -37,6 +43,9 @@ function ShowNotifs(props) {
                     <img src={p.pic} className="iconPic" />
                     <button onClick={handleShowNotifDetails}>{p.name}</button>
                     <p id={p.email[index]} className="single-notif">{p.content}</p>
+                    <div class="chatBox">
+                        <Response room={p.from_sender} name={props.me} id ={p.my_id} email={p.email} type={"swipe"} pic={props.pic}/>
+                    </div>
                     <hr />
                 </div>
                 :

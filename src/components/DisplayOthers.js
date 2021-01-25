@@ -31,7 +31,7 @@ function DisplayOthers(props){
                 console.log(err)
             })
         }
-        console.log(notifications);
+        // console.log(notifications);
         getMyInfo (`${REACT_APP_SERVER_URL}/api/users/myinfo/${props.info.email}`)
     }, [props])
 
@@ -41,7 +41,7 @@ function DisplayOthers(props){
             <p>{props.info.bio}</p>
             <p>{props.info.gender}</p>
             <p>Preference: {props.info.preference}</p>
-            <ShowNotifs alerts={notifications} />
+            <ShowNotifs alerts={notifications} me={props.info.name} my_email={props.info.email} pic={props.info.image_url}/>
             <div>
                 <button class="btn btn-outline-primary" id="edit-prof-btn">Edit info</button>
             </div>
