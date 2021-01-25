@@ -25,7 +25,7 @@ function Response (props){
 /////////////////////////////////////
 const notificationData = {
     id: props.id,
-    content: newMessage,
+    content: `${props.name} wants to chat`,
     date: Date.now(),
     my_id: props.room,
     type: 'chat',

@@ -14,12 +14,12 @@ function ShowNotifs(props) {
             if (p.read === true) {
                 setAlertsLength(alertsLength - 1)
             }
-            console.log(alertsLength);
-            if(!p.email[index]){
+            console.log(p.email+index);
+            // if(!p.email[index]){
 
-            }else{
-                document.getElementById(`${p.email[index]}`).style.display="block"
-            }
+            // }else{
+                document.getElementById(`${p.email+index}`).style.display="block"
+            // }
            
 
             const userData = {
@@ -42,9 +42,9 @@ function ShowNotifs(props) {
                     
                     <img src={p.pic} className="iconPic" />
                     <button onClick={handleShowNotifDetails}>{p.name}</button>
-                    <p id={p.email[index]} className="single-notif">{p.content}</p>
+                    <p id={p.email+index} className="single-notif">{p.content}</p>
                     <div class="chatBox">
-                        <Response room={p.from_sender} name={props.me} id ={p.my_id} email={p.email} type={"swipe"} pic={props.pic}/>
+                        <Response room={p.from_sender} name={props.me} id ={p.my_id} email={p.email} type={p.type} pic={props.pic}/>
                     </div>
                     <hr />
                 </div>

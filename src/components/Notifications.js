@@ -23,6 +23,7 @@ const Notifications = (props) => {
   const [scrolled, setScrolled] = useState(false)
 
 
+
     // function updateScroll(){
     //     if(!scrolled){
     //         var element = document.querySelector('#notify');
@@ -40,7 +41,7 @@ const Notifications = (props) => {
     let route;
 
     if (props.user.preference !== 'Both') {
-      route = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.gender}/${props.user.preference}`
+      route = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.gender}/${props.user.preference}/${props.user.email}`
     } else {
       route = `${REACT_APP_SERVER_URL}/api/users/users/random`
     }
@@ -85,7 +86,7 @@ const Notifications = (props) => {
     // document.querySelector('.chat-room-container').addEventListener('scroll', function(){
     //   setScrolled(true);
   // });
-  }, [props.user.email])
+  }, [props.user.email, messages])
 
   console.log(info);
   // const information = info && info.length ? info : ''
@@ -98,12 +99,13 @@ const Notifications = (props) => {
     <div id="profile">
     <Image email={props.user.email} pic={pic}/>
     <ImageUpload email={props.user.email} pic={setPic}/>
-    <Others user={props.user} info={info}/>
+    <Others user={props.user} info={info} email={props.user.email} pic={setPic}  pic={pic}/>
     </div>
         <div className="chat-room-container" id="notify" >
       <div className="messages-container">
         <div className="messages-list">
           {messages.map((message, i) => (
+           
             <p
               key={i}
               className={`message-item ${
