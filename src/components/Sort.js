@@ -25,15 +25,18 @@ useEffect(()=>{
 const randomUser = props.user ? props.user : ''
 console.log(props)
     return(
-        <div>
+        <div >
        
         
          
-         <div>
-         <ShowNotifs alerts={alerts} me={props.me} my_email={props.email} pic={props.pic} messages={props.messages}/>
+         <div >
+             
            <div id="home">
            <Swipe toggle={props.toggle} user={randomUser} pic={props.pic} id={props.id} me={props.me} room={props.user._id}/>
               </div>
+              <div id="red">
+         <ShowNotifs alerts={alerts} me={props.me} my_email={props.email} pic={props.pic} messages={props.messages}/>
+         </div>
    </div>
         
                 

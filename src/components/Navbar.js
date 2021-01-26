@@ -9,9 +9,7 @@ const Navbar = (props) => {
                 if (props.user) {notification = `/chat/${props.user.id}`}
                     window.location.href=notification 
        }
-        // if(!document.querySelector('#home')){
-        //     return
-        // }
+     
         document.querySelector('#profile').style.display="block";
         document.querySelector('#home').style.display="none";
     }
