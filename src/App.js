@@ -54,6 +54,11 @@ function App() {
   }
 
   const handleLogout = () => {
+    const info = {
+      email: currentUser.email,
+      online: false
+    }
+    Axios.post(`${REACT_APP_SERVER_URL}/api/users/profile/status`, info)
     if (localStorage.getItem('jwtToken')) {
       localStorage.removeItem('jwtToken');
       setCurrentUser(null);

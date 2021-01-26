@@ -21,6 +21,10 @@ const Login = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const userData = { email, password };
+        const info = {
+            email: userData.email,
+            online: true
+        }
         await axios.post(`${REACT_APP_SERVER_URL}/api/users/login`, userData)
         .then(response => {
             const { token } = response.data;
@@ -33,6 +37,7 @@ const Login = (props) => {
             const decoded = jwt_decode(token);
             // Set current user
             props.nowCurrentUser(decoded);
+            axios.post(`${REACT_APP_SERVER_URL}/api/users/profile/status`, info)
         })
         .catch(error =>{
             // console.log(error);

@@ -42,7 +42,10 @@ body {
 
 
 #home {
-  flex: 50%;
+  /* flex: 50%; */
+  display: flex;
+  background-color: darkgreen;
+  margin-right:200px;
   
 }
 
@@ -126,7 +129,7 @@ body {
 }
 
 .single-notif {
-  display: none;
+  display: block;
 }
 
 #hide-notifs {
@@ -138,6 +141,20 @@ body {
   background-color:crimson;
 }
 
-/* #preference {
-  background-color:crimson;
-} */
+#red {
+  background-color: rgb(71, 35, 42);
+  margin: 20px;
+ 
+}
+
+#parent {
+  background-color: darkblue;
+  display: flex;
+  min-width: 400px;
+}
+
+#master{
+  display:flex;
+  justify-content: space-evenly;
+  background-color: darkmagenta;
+}

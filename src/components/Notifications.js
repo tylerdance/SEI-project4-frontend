@@ -19,7 +19,7 @@ const Notifications = (props) => {
   const [account, setAccount] = useState([]);
   const [pic, setPic] = useState(false);
   const [info, setInfo] = useState([]);
-  const [reload, setReload] = useState(props)
+  const [reload, setReload] = useState('')
 
 
 
@@ -86,22 +86,22 @@ const Notifications = (props) => {
     // document.querySelector('.chat-room-container').addEventListener('scroll', function(){
     //   setScrolled(true);
   // });
-  }, [props.user.email, messages])
+  }, [props.user.email, messages, reload])
 
   console.log(info);
   // const information = info && info.length ? info : ''
   return (
-  <div id="master">
+    <div id="master">
+  <div id="profile">
+  <Image email={props.user.email} pic={pic}/>
+  <ImageUpload email={props.user.email} pic={setPic}/>
+  <Others user={props.user} info={info} email={props.user.email} pic={setPic}  pic={pic}/>
+  </div>
+    <div id="swipe">
+  
+  <Sort user={account} me={props.user.name} id={props.user.id} email={props.user.email} pic={info.image_url} toggle={getRandomUser} messages={messages}/>
+  </div>
  
-      <div id="swipe">
-    
-    <Sort user={account} me={props.user.name} id={props.user.id} email={props.user.email} pic={info.image_url} toggle={getRandomUser} messages={messages}/>
-    </div>
-    <div id="profile">
-    <Image email={props.user.email} pic={pic}/>
-    <ImageUpload email={props.user.email} pic={setPic}/>
-    <Others user={props.user} info={info} email={props.user.email} pic={setPic}  pic={pic}/>
-    </div>
         <div className="chat-room-container" id="notify" >
       <div className="messages-container">
         <div className="messages-list">
@@ -113,7 +113,7 @@ const Notifications = (props) => {
                 message.ownedByCurrentUser ? "my-message" : "received-message"
               }`}
             > 
-              { props.user.id === roomId ?
+              {/* { props.user.id === roomId ? */}
               
               <div >
                 
@@ -128,9 +128,9 @@ const Notifications = (props) => {
                 <Response room={message.id} name={props.user.name} id ={props.user.id} email={account.email} type={message.type} pic={info.image_url} reload={setReload}/>
                 </div>
               </div> 
-              : 
+              {/* :  */}
               <div></div>
-              }
+              {/* } */}
             </p>
           ))}
         </div>
