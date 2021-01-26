@@ -25,7 +25,7 @@ const Login = (props) => {
             email: userData.email,
             online: true
         }
-        await axios.post("https://tokenapp-backend.herokuapp.com/api/users/login", userData)
+        await axios.post(`${REACT_APP_SERVER_URL}/api/users/login`, userData)
         .then(response => {
             const { token } = response.data;
             console.log(response.data)
