@@ -107,9 +107,15 @@ body {
 
 
 
-#master{
+#swipe{
+  text-align: center;
+  width: 430px;
   display: flex;
-}
+  justify-content: space-around;
+
+  margin: auto;
+  border-radius: 10px;;
+} 
 
 #my-alerts {
   display: none;

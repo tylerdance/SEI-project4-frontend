@@ -7,7 +7,7 @@ import ImageUpload from './ImageUpload'
 import Image from './Image'
 import Others from './Others'
 import Response from './Response'
-import Chat from './chat/Chat'
+
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Notifications = (props) => {
@@ -19,8 +19,8 @@ const Notifications = (props) => {
   const [account, setAccount] = useState([]);
   const [pic, setPic] = useState(false);
   const [info, setInfo] = useState([]);
-  const [reload, setReload] = useState(true)
-  const [scrolled, setScrolled] = useState(false)
+  const [reload, setReload] = useState(props)
+
 
 
 
@@ -41,13 +41,13 @@ const Notifications = (props) => {
     let route;
 
     if (props.user.preference !== 'Both') {
-      route = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.gender}/${props.user.preference}/${props.user.email}`
+      route = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.gender}/${props.user.preference}/${props.user.email}/${props.user.location}`
     } else {
-      route = `${REACT_APP_SERVER_URL}/api/users/users/random`
+      route = `${REACT_APP_SERVER_URL}/api/users/users/random/${props.user.gender}/${props.user.email}/${props.user.location}`
     }
   
   
-    const url = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.preference}`
+  
 
       Axios.get(route)
 
@@ -92,9 +92,10 @@ const Notifications = (props) => {
   // const information = info && info.length ? info : ''
   return (
   <div id="master">
-      <div id="home">
+ 
+      <div id="swipe">
     
-    <Sort user={account} me={props.user.name} id={props.user.id} pic={info.image_url} toggle={getRandomUser}/>
+    <Sort user={account} me={props.user.name} id={props.user.id} email={props.user.email} pic={info.image_url} toggle={getRandomUser} messages={messages}/>
     </div>
     <div id="profile">
     <Image email={props.user.email} pic={pic}/>
@@ -124,7 +125,7 @@ const Notifications = (props) => {
               
               </div>
               <div class="chatBox">
-                <Response room={message.id} name={props.user.name} id ={props.user.id} email={account.email} type={message.type} pic={info.image_url}/>
+                <Response room={message.id} name={props.user.name} id ={props.user.id} email={account.email} type={message.type} pic={info.image_url} reload={setReload}/>
                 </div>
               </div> 
               : 

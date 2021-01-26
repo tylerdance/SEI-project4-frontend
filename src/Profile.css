@@ -7,7 +7,7 @@
   margin: auto;
   border-radius: 10px;
   display: none;
-  flex: 50%;
+  width: 400px;
 }
 
 .profilePic {

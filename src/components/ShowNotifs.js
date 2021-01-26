@@ -6,6 +6,7 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 function ShowNotifs(props) {
 
     const [alertsLength, setAlertsLength] = useState(props.alerts.length)
+    const [reload, setReload] = useState('')
     // let alertsLength = 0
     console.log(props.alerts.length);
     console.log(alertsLength);
@@ -35,6 +36,8 @@ function ShowNotifs(props) {
                 console.log(err)
             })
         }
+
+    
         return(
             <div>
                 { p.read === false ? 
@@ -44,7 +47,7 @@ function ShowNotifs(props) {
                     <button onClick={handleShowNotifDetails}>{p.name}</button>
                     <p id={p.email+index} className="single-notif">{p.content}</p>
                     <div class="chatBox">
-                        <Response room={p.from_sender} name={props.me} id ={p.my_id} email={p.email} type={p.type} pic={props.pic}/>
+                        <Response reload={setReload} room={p.from_sender} name={props.me} id ={p.my_id} email={p.email} type={p.type} pic={props.pic}/>
                     </div>
                     <hr />
                 </div>
@@ -59,7 +62,7 @@ function ShowNotifs(props) {
         setAlertsLength(props.alerts.length)
 
         setAlertsLength(alertsLength - length)
-    }, [props.alerts])
+    }, [props, reload])
 
     const handleShowNotifications = () => {
 

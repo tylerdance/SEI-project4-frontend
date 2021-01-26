@@ -6,7 +6,7 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function Swipe(props) {
   
-  console.log(props.id)
+  console.log(props.user)
     const roomId = props.user._id; 
     const user = props.me // Gets roomId from URL
     const id = props.id
@@ -63,22 +63,33 @@ function Swipe(props) {
     
     return(
       <div>
-        <div className="like-button">
+        
+        {props.user.length===0
+            ?
+            <p>Sorry We Couldn't Find Anyone in your area!</p> 
+            :
+          <div className="like-button">
         <button className="swipe" onClick={handleSwipeChange}>Swipe</button>
           <div id="me">
+                 <div>
           <img className="profilePic" src={props.user.image_url} />
           
           <p id="user-name">{props.user.name}</p>
           <p>Age: {props.user.age}</p> 
           <p>Bio: {props.user.bio}</p> 
+          <p>Location {props.user.location}</p>
           <p>Gender: {props.user.gender}</p> 
           <p>Likes: {props.user.preference}</p> 
           </div>
           <button id={props.user.image_url} onClick={handleSendMessage} className="swipe this">
             Like
           </button>
-          
-        </div>
+          </div>
+          </div>
+            
+            }
+       
+        
         </div>
     )
 }
