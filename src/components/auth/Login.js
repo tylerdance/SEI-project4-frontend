@@ -25,7 +25,7 @@ const Login = (props) => {
             email: userData.email,
             online: true
         }
-        await axios.post("http://token-chat.herokuapp.com/api/users/login", userData)
+        await axios.post("https://token-chat.herokuapp.com/api/users/login", userData)
         .then(response => {
             const { token } = response.data;
             console.log(response.data)
