@@ -69,23 +69,26 @@ function Swipe(props) {
             <p>Sorry We Couldn't Find Anyone in your area!</p> 
             :
           <div className="like-button">
-            <div className="like-button">
+            <div className="like">
         <button className="swipe" onClick={handleSwipeChange}>Swipe</button>
         </div>
           <div id="me">
                  <div>
           <img className="profilePic" src={props.user.image_url} />
-          
+          <div id="information">
           <p id="user-name">{props.user.name}</p>
+          <div id="adduressu">
           <p>Age: {props.user.age}</p> 
           <p>Bio: {props.user.bio}</p> 
           <p>Location {props.user.location}</p>
           <p>Gender: {props.user.gender}</p> 
           <p>Likes: {props.user.preference}</p> 
           </div>
+          </div>
+          </div>
         
           </div>
-          <div className="like-button">
+          <div className="like">
           <button id={props.user.image_url} onClick={handleSendMessage} className="swipe this">
             Like
           </button>

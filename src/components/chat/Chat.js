@@ -115,11 +115,12 @@ const handleNewMessageChange = (event) => {
 
 <div id={messages.time}>
       <input
+        className="imputtowa"
         type="text"
         placeholder="enter message"
         value={newMessage}
         onChange={handleNewMessageChange}
-        className="text-input-field"
+        // className="text-input-field"
       />
       <button className="send" id={props.room+props.me}onClick={handleSendMessage}>Send</button>
    

@@ -44,7 +44,7 @@ function ShowNotifs(props) {
                 <div>
                     
                     <img src={p.pic} className="iconPic" />
-                    <button onClick={handleShowNotifDetails}>{p.name}</button>
+                    <button className="yourName" onClick={handleShowNotifDetails}>{p.name}</button>
                     <p id={p.email+index} className="single-notif">{p.content}</p>
                     <div class="chatBox">
                         <Response reload={setReload} room={p.from_sender} name={props.me} id ={p.my_id} email={p.email} type={p.type} pic={props.pic}/>
@@ -80,7 +80,7 @@ function ShowNotifs(props) {
 
     return(
     <div>
-        <button onClick={handleShowNotifications}>Notifications ({props.alerts.length - length})</button>
+        <button id="notifyId" onClick={handleShowNotifications}>Notifications ({props.alerts.length - length})</button>
         <button id="hide-notifs" onClick={handleHideNotifications}>Hide Notifications</button>
         <div id="my-alerts">
             {alerts}
