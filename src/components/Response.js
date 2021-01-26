@@ -14,14 +14,16 @@ function Response (props){
  
     const { messages, sendMessage } = useChat(roomId, user, id, type, image ); // Creates a websocket and manages messaging
     const [newMessage, setNewMessage] = useState("Let's Chat");
-    
+ 
     const handleSendMessage = () => {
      
         document.getElementById(`${props.room}`).style.display="block"
-        document.getElementById('initiateChat').style.display="none"
+        document.getElementById(`${props.room+props.id}`).style.display="none"
         console.log(props.email);
         sendMessage(newMessage);
         setNewMessage("liked");
+        props.reload("me")
+        props.reload("you")
 /////////////////////////////////////
 const notificationData = {
     id: props.id,
@@ -68,7 +70,7 @@ const notificationData = {
               
                 <div className="blue" id={props.room}>
                   
-                     <Chat room={props.id+props.room} me={props.name} id={props.id} type={"chat"} pic={props.pic}/>
+                     <Chat  room={props.id+props.room} me={props.name} id={props.id} type={"chat"} pic={props.pic} reload={props.reload} saveMessage={props.room} />
                      {/* <button onClick={handleChat}>Initiate Chat</button> */}
                 </div>
               
@@ -76,9 +78,9 @@ const notificationData = {
                :
                 <div>
                     <div className="chat" id={props.room}>
-                        <Chat chat={handleChat} room={props.room+props.id} me={props.name} id={props.id} type={"chat"} pic={props.pic}/>
+                        <Chat saveMessage={props.room} chat={handleChat} room={props.room+props.id} me={props.name} id={props.id} type={"chat"} pic={props.pic} reload={props.reload}/>
                     </div>
-                    <button  id="initiateChat" onClick={handleSendMessage}>Chat</button>
+                    <button  id={props.room+props.id} onClick={handleSendMessage}>Chat</button>
                 </div>
 
            }

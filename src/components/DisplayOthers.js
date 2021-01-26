@@ -43,6 +43,7 @@ function DisplayOthers(props){
             <p>{props.info.age}</p>
             <p>{props.info.bio}</p>
             <p>{props.info.gender}</p>
+            <p> {props.info.location}</p>
             <p id="preference">Preference: {props.info.preference}</p>
            
             <div>

@@ -1,8 +1,12 @@
 import React,{useState} from "react";
 import useChat from "./useChat"
+import axios from 'axios'
+
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Chat = (props) => {
   /////////////////////
+  
   const roomId = props.room
   const user = props.me // Gets roomId from URL
   const id = props.room
@@ -19,13 +23,33 @@ const Chat = (props) => {
     setText(event.target.value);
   };
 console.log(props)
-
+props.reload(messages)
 const handleSendMessage = (e) => {
 
   console.log(roomId);
   sendMessage(newMessage);
   setNewMessage(e.target.value);
- 
+  
+  const notificationData = {
+    id: props.id,
+    content: newMessage,
+    date: Date.now(),
+    my_id: props.saveMessage,
+    type: 'chat',
+    read: false,
+    pic: props.pic,
+    email: props.email,
+    name: props.me
+  }
+
+  axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications`, notificationData)
+  .then(res => {
+    console.log(res);
+    console.log(`message to ${props.saveMessage}`)
+  }).catch(err => {
+    console.log(err);
+  })
+  
 
 };
 
@@ -35,9 +59,11 @@ const handleNewMessageChange = (event) => {
 };
 
   return (
+    
     <div className="home-container">
     
   {messages.map((message, i) => (
+    
     <div>
     <p
       key={i}
@@ -45,6 +71,10 @@ const handleNewMessageChange = (event) => {
         message.ownedByCurrentUser ? "my-message" : "received-message"
       }`}
     > 
+      <div>
+       
+       
+      </div>
     
       <div >
        
@@ -75,7 +105,12 @@ const handleNewMessageChange = (event) => {
 
     </div>
 
-  ))}
+  )
+  
+  )
+  
+  
+  }
 
 
 <div id={messages.time}>
@@ -86,12 +121,14 @@ const handleNewMessageChange = (event) => {
         onChange={handleNewMessageChange}
         className="text-input-field"
       />
-      <button className="send" onClick={handleSendMessage}>Send</button>
+      <button className="send" id={props.room+props.me}onClick={handleSendMessage}>Send</button>
    
       </div>
 
     </div>
+    
   );
+  
 };
 
 export default Chat;

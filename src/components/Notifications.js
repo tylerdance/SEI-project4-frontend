@@ -41,13 +41,13 @@ const Notifications = (props) => {
     let route;
 
     if (props.user.preference !== 'Both') {
-      route = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.gender}/${props.user.preference}/${props.user.email}`
+      route = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.gender}/${props.user.preference}/${props.user.email}/${props.user.location}`
     } else {
-      route = `${REACT_APP_SERVER_URL}/api/users/users/random`
+      route = `${REACT_APP_SERVER_URL}/api/users/users/random/${props.user.gender}/${props.user.email}/${props.user.location}`
     }
   
   
-    const url = `${REACT_APP_SERVER_URL}/api/users/users/${props.user.preference}`
+  
 
       Axios.get(route)
 
@@ -125,7 +125,7 @@ const Notifications = (props) => {
               
               </div>
               <div class="chatBox">
-                <Response room={message.id} name={props.user.name} id ={props.user.id} email={account.email} type={message.type} pic={info.image_url}/>
+                <Response room={message.id} name={props.user.name} id ={props.user.id} email={account.email} type={message.type} pic={info.image_url} reload={setReload}/>
                 </div>
               </div> 
               : 
