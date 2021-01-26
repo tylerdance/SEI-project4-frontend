@@ -1,14 +1,14 @@
 #profile {
   text-align: center;
-  width: 300px;
-  display: flex;
-  justify-content: space-around;
+  width: 400px;
+  /* display: flex;
+  justify-content: space-around; */
   background-color: rgba(161, 109, 109, 0.589);
 
   border-radius: 10px;
   display: none;
   width: 400px;
-  margin-right: -30px;
+  
 }
 
 .profilePic {
