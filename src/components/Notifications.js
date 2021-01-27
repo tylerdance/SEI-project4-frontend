@@ -99,7 +99,7 @@ const Notifications = (props) => {
   </div>
     <div id="swipe">
   
-  <Sort user={account} me={props.user.name} id={props.user.id} email={props.user.email} pic={info.image_url} toggle={getRandomUser} messages={messages}/>
+  <Sort user={account} me={props.user.name} id={props.user.id} email={props.user.email} status={info.online} pic={info.image_url} toggle={getRandomUser} messages={messages}/>
   </div>
  
         <div className="chat-room-container" id="notify" >

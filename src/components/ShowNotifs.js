@@ -8,8 +8,7 @@ function ShowNotifs(props) {
     const [alertsLength, setAlertsLength] = useState(props.alerts.length)
     const [reload, setReload] = useState('')
     // let alertsLength = 0
-    console.log(props.alerts.length);
-    console.log(alertsLength);
+   
     const alerts = props.alerts.map((p, index) => {
         const handleShowNotifDetails = () => {
             if (p.read === true) {
@@ -28,10 +27,10 @@ function ShowNotifs(props) {
                 id: p._id,
                 user: p.my_id
             }
-            console.log(userData);
+           
             Axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications/read`, userData)
             .then(res => {
-                console.log(res);
+                
             }).catch(err => {
                 console.log(err)
             })

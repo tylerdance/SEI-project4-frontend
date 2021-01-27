@@ -1,12 +1,14 @@
 import useChat from "./chat/useChat";
 import React, { useState } from "react";
 import axios from "axios";
+import TinderCard from 'react-tinder-card'
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function Swipe(props) {
+  const [lastDirection, setLastDirection] = useState()
   
-  console.log(props.user)
+  
     const roomId = props.user._id; 
     const user = props.me // Gets roomId from URL
     const id = props.id
@@ -23,8 +25,11 @@ function Swipe(props) {
     const handleNewMessageChange = (event) => {
       setNewMessage(event.target.value);
       // console.log(props.user.name)
+      
       // console.log(user + '!!!!!!')
     };
+
+    
   
     const handleSendMessage = () => {
       document.getElementById(props.user.image_url).style.display="none";
@@ -42,12 +47,15 @@ function Swipe(props) {
         read: false,
         pic: props.pic,
         email: props.user.email,
-        name: props.me
+        name: props.me,
+        online: props.status
       }
-      console.log('i am frontend email', props.email);
+      
 
       axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications`, notificationData)
       .then(res => {
+        props.toggle()
+        console.log('swiped right')
         console.log(res);
       }).catch(err => {
         console.log(err);
@@ -58,9 +66,33 @@ function Swipe(props) {
       document.querySelector('.this').style.display="block";
       
       props.toggle()
+      console.log('swiped left')
    
     }
-    
+    const status = (status) => {
+      if(status === true) {
+        return 'Online'
+      } else if (status === false) {
+        return 'Offline'
+      }
+    }
+
+    const swiped = (direction, nameToDelete) => {
+      if (direction === 'left') {
+        handleSwipeChange()
+      } else if (direction ==='right') {
+        handleSendMessage()
+      }
+      console.log('removing: ' + nameToDelete)
+      setLastDirection(direction)
+    }
+  
+    const outOfFrame = (name) => {
+      console.log(name + ' left the screen!')
+    }
+
+
+    console.log(status)
     return(
       <div>
         
@@ -70,11 +102,19 @@ function Swipe(props) {
             :
           <div className="like-button">
             <div className="like">
-        <button className="swipe" onClick={handleSwipeChange}>Swipe</button>
+        <button className="swipe" onClick={handleSwipeChange}>❌</button>
         </div>
           <div id="me">
                  <div>
-          <img className="profilePic" src={props.user.image_url} />
+                 <div id='tinder'>
+                 <TinderCard className='swipe' key={props.user.name} onSwipe={(dir) => swiped(dir, props.user.name)} onCardLeftScreen={() => outOfFrame(props.user.name)}>
+            <div >
+            <img className={status(props.user.online)} src={props.user.image_url} />
+            </div>
+          </TinderCard>
+          </div>
+            
+          {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
           <div id="information">
           <p id="user-name">{props.user.name}</p>
           <div id="adduressu">
@@ -82,7 +122,8 @@ function Swipe(props) {
           <p>Bio: {props.user.bio}</p> 
           <p>Location {props.user.location}</p>
           <p>Gender: {props.user.gender}</p> 
-          <p>Likes: {props.user.preference}</p> 
+          <p>Likes: {props.user.preference}</p>
+          <p>{status(props.user.online)}</p> 
           </div>
           </div>
           </div>
@@ -90,14 +131,13 @@ function Swipe(props) {
           </div>
           <div className="like">
           <button id={props.user.image_url} onClick={handleSendMessage} className="swipe this">
-            Like
+            💙
           </button>
           </div>
           </div>
             
             }
-       
-        
+            
         </div>
     )
 }
