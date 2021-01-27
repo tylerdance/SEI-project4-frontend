@@ -25,6 +25,9 @@ const Chat = (props) => {
 
 props.reload(messages)
 const handleSendMessage = (e) => {
+  if(newMessage === ''){
+    return
+  }
 
   
   sendMessage(newMessage);
@@ -53,6 +56,7 @@ const handleSendMessage = (e) => {
 };
 
 const handleNewMessageChange = (event) => {
+  
   setNewMessage(event.target.value);
  
 };

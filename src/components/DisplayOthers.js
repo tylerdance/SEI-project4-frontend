@@ -46,9 +46,9 @@ function DisplayOthers(props){
             <p> {props.info.location}</p>
             <p id="preference">Preference: {props.info.preference}</p>
            
-            <div>
+            {/* <div>
                 <button class="btn btn-outline-primary" id="edit-prof-btn">Edit info</button>
-            </div>
+            </div> */}
             {/* <ShowNotifs alerts={notifications} me={props.info.name} my_email={props.info.email} pic={props.info.image_url}/> */}
         </div>
     )

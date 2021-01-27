@@ -86,7 +86,7 @@ const Notifications = (props) => {
     // document.querySelector('.chat-room-container').addEventListener('scroll', function(){
     //   setScrolled(true);
   // });
-  }, [props.user.email, messages, reload])
+  }, [props.user.email])
 
   console.log(info);
   // const information = info && info.length ? info : ''
