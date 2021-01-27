@@ -67,7 +67,7 @@ const handleNewMessageChange = (event) => {
     
   {messages.map((message, i) => (
     
-    <div>
+    <div >
     <p
       key={i}
       className={`message-item ${
@@ -75,45 +75,27 @@ const handleNewMessageChange = (event) => {
       }`}
     > 
       <div>
-       
-       
       </div>
-    
-      <div >
-       
+      <div className="chat-div" >
       { props.me === message.senderId?
       <div className="youSay">
             <img className="iconPic" src={message.image}/>
-            <p> {message.body}</p>
-          
+            <p className="chat-body"> {message.body}</p>  
       </div>
       :
-      <div>
+      <div className="they-say">
           <img className="iconPic" src={message.image}/>
-          <p>{message.senderId} says:</p>
-          <p> {message.body}</p>
-        
+          <p className="chat-names">{message.senderId}</p>
+          <p className="chat-body"> {message.body}</p>
       </div>
 } 
-
- 
-
-     
-    
      </div>
-    
-    
     </p>
-   
 
     </div>
-
   )
-  
-  )
-  
-  
-  }
+)
+}
 
 
 <div id={messages.time}>
@@ -126,9 +108,7 @@ const handleNewMessageChange = (event) => {
         // className="text-input-field"
       />
       <button className="send" id={props.room+props.me}onClick={handleSendMessage}>Send</button>
-   
       </div>
-
     </div>
     
   );

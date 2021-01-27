@@ -80,8 +80,10 @@ const Notifications = (props) => {
     <div id="master">
   <div id="profile">
   <Image email={props.user.email} pic={pic}/>
-  <ImageUpload email={props.user.email} pic={setPic}/>
-  <Others user={props.user} info={info} email={props.user.email} pic={setPic}  pic={pic}/>
+  <div id="showNotifsDiv">
+    <ImageUpload email={props.user.email} pic={setPic}/>
+    <Others user={props.user} info={info} email={props.user.email} pic={setPic}  pic={pic}/>
+  </div>
   </div>
     <div id="swipe">
   
@@ -110,7 +112,7 @@ const Notifications = (props) => {
               
               
               </div>
-              <div class="chatBox">
+              <div class="chatBox they-say">
                 <Response room={message.id} name={props.user.name} id ={props.user.id} email={account.email} type={message.type} pic={info.image_url} reload={setReload}/>
                 </div>
               </div> 

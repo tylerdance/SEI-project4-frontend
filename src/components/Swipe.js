@@ -118,12 +118,14 @@ function Swipe(props) {
           <div id="information">
           <p id="user-name">{props.user.name}</p>
           <div id="adduressu">
-          <p>{props.user.age}</p> 
-          <p>{props.user.bio}</p> 
-          <p>{props.user.location}</p>
-          {/* <p>{props.user.gender}</p>  */}
-          {/* <p>Likes: {props.user.preference}</p> */}
-          <p>{status(props.user.online)}</p> 
+            <div id="swipe-info">
+              <p>{props.user.age}</p> 
+              <p>{props.user.bio}</p> 
+              <p>{props.user.location}</p>
+              {/* <p>{props.user.gender}</p>  */}
+              {/* <p>Likes: {props.user.preference}</p> */}
+              <p>{status(props.user.online)}</p> 
+            </div>
           </div>
           </div>
           </div>
@@ -136,7 +138,7 @@ function Swipe(props) {
           </div>
           </div>
             
-            }
+        }
             
         </div>
     )

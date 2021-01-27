@@ -35,11 +35,14 @@ function DisplayOthers(props){
              <div id="showNotifsDiv">
            
             </div>
-            <p>{props.info.age}</p>
-            <p>{props.info.bio}</p>
-            <p>{props.info.gender}</p>
-            <p> {props.info.location}</p>
-            <p id="preference">Preference: {props.info.preference}</p>
+            <div id="my-prof-info">
+                <p>{props.info.age}</p>
+                <p>{props.info.bio}</p>
+                <p>{props.info.gender}</p>
+                <p> {props.info.location}</p>
+                <p id="preference">Preference: {props.info.preference}</p>
+
+            </div>
            
         </div>
     )

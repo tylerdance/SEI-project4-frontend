@@ -145,9 +145,33 @@ body {
 
 .youSay {
   text-align: right;
+  /* margin-top: 20px; */
 }
 
+.they-say {
+  text-align: left;
+  /* margin-top: 20px; */
+}
 
+.chat-div{
+  background-color:rgba(158, 203, 169, 0.659);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.chat-names {
+  font-weight: 900;
+  /* color: red; */
+}
+
+.chat-body {
+  color: rgb(109, 109, 109);
+
+}
+
+p {
+  margin: 2px;
+}
 
 #swipe{
   text-align: center;
@@ -159,6 +183,10 @@ body {
   /* margin: auto; */
   border-radius: 10px;;
 } 
+
+#swipe-info {
+  margin-top: 40px;
+}
 
 #swipe-pic {
   height: 100px;
@@ -233,6 +261,11 @@ body {
   background-color: rgba(174, 187, 171, 0.26);
   width: 300px;
   border-radius: 15px;
+  margin-top: 40px;
+}
+
+#showNotifsDiv {
+  margin-top: 40px;
 }
 
 .imputtowa {
