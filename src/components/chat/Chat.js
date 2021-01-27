@@ -35,7 +35,7 @@ const handleSendMessage = (e) => {
   
   const notificationData = {
     id: props.id,
-    content: newMessage,
+    content: `Missed message: ${newMessage}`,
     date: Date.now(),
     my_id: props.saveMessage,
     type: 'chat',

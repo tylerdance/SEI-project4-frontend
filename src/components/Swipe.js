@@ -105,14 +105,14 @@ function Swipe(props) {
         <button className="swipe" onClick={handleSwipeChange}>❌</button>
         </div>
           <div id="me">
-                 <div>
-                 <div id='tinder'>
-                 <TinderCard className='swipe' key={props.user.name} onSwipe={(dir) => swiped(dir, props.user.name)} onCardLeftScreen={() => outOfFrame(props.user.name)}>
-            <div >
-            <img className={status(props.user.online)} src={props.user.image_url} />
-            </div>
-          </TinderCard>
-          </div>
+            <div>
+              <div id='tinder'>
+                {/* <TinderCard className='swipe' key={props.user.name} onSwipe={(dir) => swiped(dir, props.user.name)} onCardLeftScreen={() => outOfFrame(props.user.name)}> */}
+                <div>
+                  <img className={status(props.user.online)} src={props.user.image_url} />
+                </div>
+                {/* </TinderCard> */}
+              </div>
             
           {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
           <div id="information">

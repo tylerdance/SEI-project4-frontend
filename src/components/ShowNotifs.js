@@ -30,6 +30,8 @@ function ShowNotifs(props) {
            
             Axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications/read`, userData)
             .then(res => {
+                props.refresh('auth token')
+                props.refresh('app.js')
                 
             }).catch(err => {
                 // console.log(err)
@@ -43,7 +45,7 @@ function ShowNotifs(props) {
                 <div>
                     
                     <img src={p.pic} className="iconPic" />
-                    <button className="yourName" onClick={handleShowNotifDetails}>{p.name}</button>
+                    <button className="yourName" onClick={handleShowNotifDetails}>Hide</button>
                     <p id={p.email+index} className="single-notif">{p.content}</p>
                     <div class="chatBox">
                         <Response reload={setReload} room={p.from_sender} name={props.me} id ={p.my_id} email={p.email} type={p.type} pic={props.pic}/>

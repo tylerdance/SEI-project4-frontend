@@ -8,7 +8,7 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 function Sort(props) {
 
 const [alerts, setAlerts]= useState([]) 
-
+const [refresh, setRefresh] = useState('')
   
 // console.log(props.status)
 
@@ -22,7 +22,7 @@ useEffect(()=>{
 
 
     // console.log(props.email)
-}, [props.email, props.messages])
+}, [props.email, props.messages, refresh])
 
 const randomUser = props.user ? props.user : ''
 // console.log(randomUser)
@@ -37,7 +37,7 @@ const randomUser = props.user ? props.user : ''
            <Swipe toggle={props.toggle} user={randomUser} pic={props.pic} id={props.id} me={props.me} room={props.user._id}/>
               </div>
               <div id="red">
-         <ShowNotifs alerts={alerts} me={props.me} my_email={props.email} pic={props.pic} messages={props.messages}/>
+         <ShowNotifs alerts={alerts} me={props.me} my_email={props.email} pic={props.pic} messages={props.messages} refresh={setRefresh} />
          </div>
    
 </div>

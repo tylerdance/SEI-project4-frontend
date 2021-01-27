@@ -53,9 +53,17 @@
   border: solid 5px rgba(197, 193, 193, 0.651);
 }
 
-#tinder {
+/* #tinder {
   height: 300px;
-}
+} */
+
+/* #swipe-pic {
+  border-radius: 100%;
+  max-width: 300px;
+  max-height: 300px;
+  width: 100%;
+  height: auto;
+} */
 
 #image-form {
   display: none;
