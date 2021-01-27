@@ -11,6 +11,27 @@
   
 }
 
+#my-alerts {
+  display: flex;
+  height: 500px;
+  overflow: auto;
+  display: flex;
+  height: 500px;
+  overflow: auto;
+  flex-direction:  column-reverse;
+}
+
+.profilePic {
+  display: inline-block;
+  margin: 0px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 100%;
+  position: relative;
+  border: solid 5px rgba(197, 193, 193, 0.651);
+}
+
 .Online {
   display: inline-block;
   margin: 0px;

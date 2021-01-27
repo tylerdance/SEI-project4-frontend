@@ -25,6 +25,9 @@ const Chat = (props) => {
 
 props.reload(messages)
 const handleSendMessage = (e) => {
+  if(newMessage === ''){
+    return
+  }
 
   
   sendMessage(newMessage);
@@ -44,15 +47,16 @@ const handleSendMessage = (e) => {
 
   axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications`, notificationData)
   .then(res => {
-    console.log(`message to ${props.saveMessage}`)
+    // console.log(`message to ${props.saveMessage}`)
   }).catch(err => {
-    console.log(err);
+    // console.log(err);
   })
   
 
 };
 
 const handleNewMessageChange = (event) => {
+  
   setNewMessage(event.target.value);
  
 };

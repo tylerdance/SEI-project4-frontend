@@ -22,8 +22,8 @@ const Signup = () => {
     //////////////////////
     const handleAge = (e) => {
         setAge(parseInt(e.target.value));
-        console.log(age)
-        console.log(typeof age)
+        // console.log(age)
+        // console.log(typeof age)
     }
     const handleBio = (e) => {
         setBio(e.target.value);
@@ -51,7 +51,7 @@ const Signup = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(typeof age)
+        // console.log(typeof age)
         if (password === confirmPassword && password.length >= 8 && age >17 && photo!=="" && age !== "" && name!=="" && gender!=="" && preference !== "" && location !== "") {
             const newUser = { name, email, password, age, gender, bio, preference, location, photo };
             await axios.post(`${REACT_APP_SERVER_URL}/api/users/register`, newUser)
@@ -60,7 +60,7 @@ const Signup = () => {
                 setRedirect(true);
             })
             .catch(error => {
-                console.log(error); 
+                // console.log(error); 
                 alert('Email already in use')
             })
         } else if (password !== confirmPassword) {

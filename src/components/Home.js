@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import Notifications from './chat/Notifications'
 
 const Home = (props) => {
-    console.log(props);
+    // console.log(props);
     const userData = props.user ? 
     (<div>
         <h1>Profile</h1>

@@ -10,20 +10,22 @@ function Sort(props) {
 const [alerts, setAlerts]= useState([]) 
 
   
-console.log(props.status)
+// console.log(props.status)
 
 useEffect(()=>{
     axios.get(`${REACT_APP_SERVER_URL}/api/users/myinfo/${props.email}`).
     then(res=>{
         setAlerts(res.data.user[0].notifications)
-    }).catch(err=>{console.log(err)})
+    }).catch(err=>{
+        // console.log(err)
+    })
 
 
-    console.log(props.email)
+    // console.log(props.email)
 }, [props.email, props.messages])
 
 const randomUser = props.user ? props.user : ''
-console.log(randomUser)
+// console.log(randomUser)
     return(
         <div id="here" >
        

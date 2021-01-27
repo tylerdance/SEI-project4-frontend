@@ -19,7 +19,7 @@ function Response (props){
      
         document.getElementById(`${props.room}`).style.display="block"
         document.getElementById(`${props.room+props.id}`).style.display="none"
-        console.log(props.email);
+        // console.log(props.email);
         sendMessage(newMessage);
         setNewMessage("liked");
         props.reload("me")
@@ -39,28 +39,18 @@ const notificationData = {
 
   axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications`, notificationData)
   .then(res => {
-    console.log(res);
+    // console.log(res);
   }).catch(err => {
-    console.log(err);
+    // console.log(err);
   })
 //////////////////////////////////////////////////////////////////
 };
     
-    
-    
+  
     const handleChat =()=>{
         document.getElementById(`${props.room}`).style.display="block"
     }
  
-
-   
-    
-   
-
-
-
-
-    
   return (
        <div>
             

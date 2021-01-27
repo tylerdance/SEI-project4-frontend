@@ -55,10 +55,10 @@ function Swipe(props) {
       axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications`, notificationData)
       .then(res => {
         props.toggle()
-        console.log('swiped right')
-        console.log(res);
+      //   console.log('swiped right')
+      //   console.log(res);
       }).catch(err => {
-        console.log(err);
+      //   console.log(err);
       })
     };
 
@@ -66,7 +66,7 @@ function Swipe(props) {
       document.querySelector('.this').style.display="block";
       
       props.toggle()
-      console.log('swiped left')
+      // console.log('swiped left')
    
     }
     const status = (status) => {
@@ -83,16 +83,16 @@ function Swipe(props) {
       } else if (direction ==='right') {
         handleSendMessage()
       }
-      console.log('removing: ' + nameToDelete)
+      // console.log('removing: ' + nameToDelete)
       setLastDirection(direction)
     }
   
     const outOfFrame = (name) => {
-      console.log(name + ' left the screen!')
+      // console.log(name + ' left the screen!')
     }
 
 
-    console.log(status)
+    // console.log(status)
     return(
       <div>
         
@@ -118,11 +118,11 @@ function Swipe(props) {
           <div id="information">
           <p id="user-name">{props.user.name}</p>
           <div id="adduressu">
-          <p>Age: {props.user.age}</p> 
-          <p>Bio: {props.user.bio}</p> 
-          <p>Location {props.user.location}</p>
-          <p>Gender: {props.user.gender}</p> 
-          <p>Likes: {props.user.preference}</p>
+          <p>{props.user.age}</p> 
+          <p>{props.user.bio}</p> 
+          <p>{props.user.location}</p>
+          {/* <p>{props.user.gender}</p>  */}
+          {/* <p>Likes: {props.user.preference}</p> */}
           <p>{status(props.user.online)}</p> 
           </div>
           </div>
