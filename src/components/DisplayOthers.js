@@ -8,11 +8,6 @@ function DisplayOthers(props){
 
     const [notifications, setNotifications] = useState([])
 
-    // console.log(props.info.notifications);
-    
-
-    // const notifications = props.info.notifications ? props.info.notifications : ''
-
     useEffect(()=> {
 
         function getMyInfo(route) {

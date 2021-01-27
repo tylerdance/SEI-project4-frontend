@@ -67,12 +67,12 @@ function Swipe(props) {
       
       props.toggle()
       // console.log('swiped left')
-   
     }
+
     const status = (status) => {
       if(status === true) {
         return 'Online'
-      } else if (status === false) {
+      } else {
         return 'Offline'
       }
     }

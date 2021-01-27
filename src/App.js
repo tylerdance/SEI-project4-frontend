@@ -9,7 +9,7 @@ import './Navbar.css';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-
+import LandingPage from './components/LandingPage'
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 // import About from './Components/About';
@@ -75,7 +75,7 @@ function App() {
       <div className="container mt-5">
         <Switch>
           <Route path='/signup' component={Signup} />
-        
+          <Route exact path="/" component={LandingPage} />
           <Route 
             path='/login' 
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} />
