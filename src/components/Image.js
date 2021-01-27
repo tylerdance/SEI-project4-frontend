@@ -24,10 +24,10 @@ function Image (props) {
     }
 
 
-useEffect (()=>{
-    getImage(`${REACT_APP_SERVER_URL}/api/users/myphoto/${props.email}`)
+    useEffect (()=>{
+        getImage(`${REACT_APP_SERVER_URL}/api/users/myphoto/${props.email}`)
 
-},[props.email, props.pic])
+    },[props.email, props.pic])
    
  
         return(

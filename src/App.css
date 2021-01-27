@@ -15,6 +15,26 @@ body {
   font-family: 'Biryani', sans-serif;
    
 }
+
+.landing-pic {
+  display: inline-block;
+  margin: auto;
+  width: 600px;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 100%;
+  /* position: relative; */
+  border: solid 5px rgba(197, 193, 193, 0.651);
+  display: flex;
+  justify-content: center;
+}
+
+.landing-header {
+  text-align: center;
+  margin: 30px;
+  font-weight: 900;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
