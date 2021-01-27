@@ -22,11 +22,11 @@ const Chat = (props) => {
     const handleRoomNameChange = (event) => {
     setText(event.target.value);
   };
-console.log(props)
+
 props.reload(messages)
 const handleSendMessage = (e) => {
 
-  console.log(roomId);
+  
   sendMessage(newMessage);
   setNewMessage(e.target.value);
   
@@ -44,7 +44,6 @@ const handleSendMessage = (e) => {
 
   axios.post(`${REACT_APP_SERVER_URL}/api/users/notifications`, notificationData)
   .then(res => {
-    console.log(res);
     console.log(`message to ${props.saveMessage}`)
   }).catch(err => {
     console.log(err);
