@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink, Redirect, Route} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = (props) => {
-    console.log(props.user)
+    // console.log(props.user)
     function revealProfile(){
         if(!document.querySelector('#profile')){
             let notification

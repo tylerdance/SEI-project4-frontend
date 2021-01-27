@@ -14,7 +14,7 @@ function ShowNotifs(props) {
             if (p.read === true) {
                 setAlertsLength(alertsLength - 1)
             }
-            console.log(p.email+index);
+            // console.log(p.email+index);
             // if(!p.email[index]){
 
             // }else{
@@ -32,7 +32,7 @@ function ShowNotifs(props) {
             .then(res => {
                 
             }).catch(err => {
-                console.log(err)
+                // console.log(err)
             })
         }
 

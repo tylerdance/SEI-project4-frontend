@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import ShowNotifs from './ShowNotifs';
+// import ShowNotifs from './ShowNotifs';
 import Axios from 'axios'
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -8,7 +8,7 @@ function DisplayOthers(props){
 
     const [notifications, setNotifications] = useState([])
 
-    console.log(props.info.notifications);
+    // console.log(props.info.notifications);
     
 
     // const notifications = props.info.notifications ? props.info.notifications : ''
@@ -28,7 +28,7 @@ function DisplayOthers(props){
             //   console.log(info) 
             })
             .catch(err=>{
-                console.log(err)
+                // console.log(err)
             })
         }
         // console.log(notifications);
@@ -46,10 +46,6 @@ function DisplayOthers(props){
             <p> {props.info.location}</p>
             <p id="preference">Preference: {props.info.preference}</p>
            
-            {/* <div>
-                <button class="btn btn-outline-primary" id="edit-prof-btn">Edit info</button>
-            </div> */}
-            {/* <ShowNotifs alerts={notifications} me={props.info.name} my_email={props.info.email} pic={props.info.image_url}/> */}
         </div>
     )
 }

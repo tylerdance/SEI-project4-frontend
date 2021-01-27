@@ -11,7 +11,7 @@ import Response from './Response'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Notifications = (props) => {
-  console.log(props.user)
+  // console.log(props.user)
   const  { roomId } = props.match.params; 
   const user = props.user.name// Gets roomId from URL
   const { messages, sendMessage } = useChat(roomId, user); // Creates a websocket and manages messaging
@@ -20,20 +20,6 @@ const Notifications = (props) => {
   const [pic, setPic] = useState(false);
   const [info, setInfo] = useState([]);
   const [reload, setReload] = useState('')
-
-
-
-
-    // function updateScroll(){
-    //     if(!scrolled){
-    //         var element = document.querySelector('#notify');
-    //         element.scrollTop = element.scrollHeight;
-    //     }
-    // }
-    
-
-
-
 
   // get random user
   const getRandomUser = () => {
@@ -52,11 +38,11 @@ const Notifications = (props) => {
       Axios.get(route)
 
       .then(res => {
-        console.log(res.data.profile)
+        // console.log(res.data.profile)
         setAccount(res.data.profile)
       
       }) .catch(err => {
-        console.log(err);
+        // console.log(err);
     })
   }
 
@@ -68,14 +54,14 @@ const Notifications = (props) => {
     
     Axios.get(route)
     .then(res =>{
-      console.log(props.user.email)
-      console.log(res.data)
+      // console.log(props.user.email)
+      // console.log(res.data)
       setInfo(res.data.user[0])
-      console.log(info) 
+      // console.log(info) 
       
     })
     .catch(err=>{
-        console.log(err)
+        // console.log(err)
     })
   }
   
@@ -88,7 +74,7 @@ const Notifications = (props) => {
   // });
   }, [props.user.email])
 
-  console.log(info);
+  // console.log(info);
   // const information = info && info.length ? info : ''
   return (
     <div id="master">
