@@ -32,7 +32,7 @@ function Swipe(props) {
     
   
     const handleSendMessage = () => {
-      document.getElementById(props.user.image_url).style.display="none";
+      // document.getElementById(props.user.image_url).style.display="none";
       // console.log(roomId);
       sendMessage(newMessage);
       setNewMessage(`Your profile was liked by ${props.me}`);
@@ -63,7 +63,7 @@ function Swipe(props) {
     };
 
     const handleSwipeChange = () =>{
-      document.querySelector('.this').style.display="block";
+      // document.querySelector('.this').style.display="block";
       
       props.toggle()
       // console.log('swiped left')
@@ -80,7 +80,7 @@ function Swipe(props) {
     const swiped = (direction, nameToDelete) => {
       if (direction === 'left') {
         handleSwipeChange()
-      } else if (direction ==='right') {
+      } else {
         handleSendMessage()
       }
       // console.log('removing: ' + nameToDelete)
@@ -101,20 +101,20 @@ function Swipe(props) {
             <p>Sorry We Couldn't Find Anyone in your area!</p> 
             :
           <div className="like-button">
-            <div className="like">
+            {/* <div className="like">
         <button className="swipe" onClick={handleSwipeChange}>❌</button>
-        </div>
+        </div> */}
           <div id="me">
             <div>
               <div id='tinder'>
-                {/* <TinderCard className='swipe' key={props.user.name} onSwipe={(dir) => swiped(dir, props.user.name)} onCardLeftScreen={() => outOfFrame(props.user.name)}> */}
+                <TinderCard className='swipe' key={Date.now()} onSwipe={(dir) => swiped(dir, props.user.name)} onCardLeftScreen={() => outOfFrame(props.user.name)}>
                 <div>
                   <img className={status(props.user.online)} src={props.user.image_url} />
                 </div>
-                {/* </TinderCard> */}
+                </TinderCard>
               </div>
             
-          {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+          {/* {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />} */}
           <div id="information">
           <p id="user-name">{props.user.name}</p>
           <div id="adduressu">
@@ -131,11 +131,11 @@ function Swipe(props) {
           </div>
         
           </div>
-          <div className="like">
+          {/* <div className="like">
           <button id={props.user.image_url} onClick={handleSendMessage} className="swipe this">
             💙
           </button>
-          </div>
+          </div> */}
           </div>
             
         }
