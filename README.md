@@ -1,9 +1,39 @@
-Token
+# Token
 
-[Live Version at](http://tokenapp-backend.herokuapp.com)
+Token is a websocket based chat app experiment that allows users to find connections based on their gender, preference, and location. Messaging between users are stored in the database. Once  logged in, the user will be shown a randomly chosen profile that matches their prefence and location. The user can either "LIKE" the profile and initaite a conversation or request to view another randomly chosen profile. The application will tell you what users are currently online. Swipe right to send a chat invitation to that user, swipe left to shuffle the database. 
 
-# Background
-A dating application that implements messaging between users stored in the database. Once  logged in the user will be shown a randomly chosen profile that matches their prefence and location. The user can either "LIKE" the profile and initaite a conversation or request to view another randomly chosen profile. The application will tell you what users are currently online.
+Create test account in Kansas City for populated demo search results.
+
+[Live Site](http://tokenapp-backend.herokuapp.com)
+
+Frontend repo:
+https://github.com/tylerdance/SEI-project4-frontend
+
+Backend repo:
+https://github.com/tylerdance/SEI-project4-backend
+
+### Tech Stack
+```
+MongoDB / Express / React.js / Node
+```
+
+### Installation
+- Confirm installation of MongoDB
+- After cloning both the frontend and backend repos, run `npm i` to install node package dependencies
+- Create a `.env` file on the backend with a `JWT_SECRET` and a `MONGO_URI`
+
+#### Example backend `.env`:
+```
+JWT_SECRET="thiscanbeanything"
+MONGO_URI="mongodb://127.0.0.1:27017/nameOfYourDatabase"
+```
+- Create a `.env` file on the frontend to create a variable to connect to your backend server
+
+#### Example frontend `.env`:
+```
+REACT_APP_SERVER_URL=http://localhost:8000
+```
+
 
 ## User Stories
 As a user, I want to be able to sign up with my age, gender, bio, location and search preferences to filter my results.
@@ -13,10 +43,11 @@ As a user, I want to be able to edit my profile pictures and information.
 
 ## Wireframes
 ### Main
-![image](./images/main-swipe-page.png)
+<img src="./images/main-swipe-page.png" width="200">
 
 ### Direct messages
-![image](./images/dm-png.png)
+<img src="./images/dm-png.png" width="200">
+<!-- ![image](./images/dm-png.png) -->
 
 ## Code
 The application relies on sockets.io to enable messages between users. You can all user socket infornation in userChat.js and make tweeks accouding to your liking.
@@ -137,7 +168,7 @@ The Response.js handles responses to like requests and reveals a chat window if 
            }
        </div>
 ```
-We create a unique channel for the 2 users ti chat by interpelationg their roomIds and attach that information to our messages
+We create a unique channel for the 2 users to chat by interpelationg their roomIds and attach that information to our messages
 ```js
 </div>
 <button  id={props.room+props.id} onClick={handleSendMessage}>Chat</button>
